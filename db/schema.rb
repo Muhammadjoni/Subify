@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_110652) do
+ActiveRecord::Schema.define(version: 2021_11_14_114436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "title"
+    t.string "username"
+    t.string "type"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "price"
+    t.text "notes"
+    t.text "link"
+    t.boolean "notify"
+    t.integer "notify_before"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +40,13 @@ ActiveRecord::Schema.define(version: 2021_11_14_110652) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.text "sms_number"
+    t.text "whatsapp_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "subscriptions", "users"
 end
