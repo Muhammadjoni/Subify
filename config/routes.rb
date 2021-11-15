@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     collection do
       get :my_subscriptions
     end
+  end
 end
