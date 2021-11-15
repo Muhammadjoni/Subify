@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_080920) do
   create_table "subscriptions", force: :cascade do |t|
     t.string "title"
     t.string "username"
-    t.string "type"
+    t.string "sub_type"
     t.date "start_date"
     t.date "end_date"
     t.integer "price"
