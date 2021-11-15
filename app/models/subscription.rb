@@ -3,6 +3,7 @@ class Subscription < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :type, presence: true
+  validates :sub_type, presence: true
   validates :notify_before, presence: true
+  validates :category, presence: true
 end
