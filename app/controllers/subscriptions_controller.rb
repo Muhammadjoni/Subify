@@ -1,8 +1,9 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_subscription, only: [:show, :edit, :update, :destroy]
+  before_action :set_subscription, only: %I[show edit update destroy]
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    @subscriptions = current_user.subscriptions
     @subscriptions = Subscription.all
   end
 
@@ -11,11 +12,13 @@ class SubscriptionsController < ApplicationController
   end
 
   def show
+    @subscriptions = Subscription.all
   end
 
   def create
     @subscription = Subscription.create(subscription_params)
     @subscription.user = current_user
+
     if @subscription.save
       redirect_to @subscription, notice: 'Subscription was successfully created.'
     else
@@ -34,12 +37,12 @@ class SubscriptionsController < ApplicationController
 
   def destroy
     @subscription.destroy
-    redirect_to my_subscriptions_subscriptions_path
+    redirect_to subscriptions_path
   end
 
-  def my_subscriptions
-    @subscriptions = current_user.subscriptions
-  end
+  # def my_subscriptions
+  #   @subscriptions = current_user.subscriptions
+  # end
 
   private
 
@@ -48,6 +51,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:subscription).permit(:title, :username, :type, :notify, :notify_before, :notes, :price, :start_date, :end_date)
+    params.require(:subscription).permit(:title, :username, :sub_type, :notify, :notify_before, :notes, :price, :start_date, :end_date, :category, :currency)
   end
 end
