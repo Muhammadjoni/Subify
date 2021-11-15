@@ -5,4 +5,5 @@ class Subscription < ApplicationRecord
   validates :end_date, presence: true
   validates :sub_type, presence: true
   validates :notify_before, presence: true
+  validates :category, presence: true
 end
