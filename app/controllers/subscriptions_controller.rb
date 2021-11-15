@@ -7,6 +7,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def new
+    @subscription = Subscription.new
   end
 
   def show
@@ -14,24 +15,30 @@ class SubscriptionsController < ApplicationController
 
   def create
     @subscription = Subscription.create(subscription_params)
-
+    @subscription.user = current_user
     if @subscription.save
-      redirect_to @subscription, notice: 'subscription was successfully created.'
+      redirect_to @subscription, notice: 'Subscription was successfully created.'
     else
-      render :news
+      render :new
     end
   end
 
   def edit
+    @subscription.user = current_user
   end
 
   def update
     @subscription.update(subscription_params)
+    redirect_to @subscription
   end
 
   def destroy
     @subscription.destroy
     redirect_to my_subscriptions_subscriptions_path
+  end
+
+  def my_subscriptions
+    @subscriptions = current_user.subscriptions
   end
 
   private
@@ -41,7 +48,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:subscription).permit(:title, :username, :type, :notify,
-                                    :notify_before, :notes, :price, :start_date, :end_date)
+    params.require(:subscription).permit(:title, :username, :type, :notify, :notify_before, :notes, :price, :start_date, :end_date)
   end
 end
