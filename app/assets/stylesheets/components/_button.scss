@@ -1,3 +1,18 @@
+
+.btn-ghost {
+  color: white;
+  border: 50px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: bolder;
+  background-color: #72b8d3;
+  transition: opacity 0.3s ease;
+}
+
+.btn-ghost:hover {
+  opacity: 0.8;
+}
+
 .btn-gradient {
   color: white;
   padding: 6px 10px;
@@ -40,4 +55,16 @@
 .btn-delete:hover {
   background: radial-gradient(#e09595, #cf5454);
   color: white;
+}
+
+
+
+.btn-link-1:hover, .btn-link-1:focus, .btn-link-1:active, .btn-link-1:active:focus,
+.btn-link-1.btn-primary:not(:disabled):not(.disabled):active,
+.btn-link-1.btn-primary:not(:disabled):not(.disabled):active:focus {
+    background: #9b59b6;
+    background: rgba(155, 89, 182, 0.9);
+    outline: 0;
+    color: #fff;
+    box-shadow: none;
 }
