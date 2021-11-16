@@ -5,7 +5,7 @@ class Subscription < ApplicationRecord
   validates :end_date, presence: true
   validates :notify_before, presence: true
 
-  CATEGORY = %W(Entertainment Education Finance Utility-Bills Others)
+  CATEGORY = %W(Entertainment Education Finance Others)
   validates :category, inclusion: { in: CATEGORY }
 
   CURRENCY = %W(USD EURO AED GBP Unknown)
@@ -18,7 +18,7 @@ class Subscription < ApplicationRecord
   pg_search_scope :search,
     against: [ :title, :category ],
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      tsearch: { prefix: true }
     }
 
 end
