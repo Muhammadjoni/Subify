@@ -13,4 +13,12 @@ class Subscription < ApplicationRecord
 
   SUB_TYPE = %W(Weekly Monthly Annual)
   validates :sub_type, inclusion: { in: SUB_TYPE }
+
+  include PgSearch::Model
+  pg_search_scope :search,
+    against: [ :title, :category ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
 end

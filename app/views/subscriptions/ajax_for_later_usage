@@ -1,0 +1,30 @@
+<div data-controller="search-subscriptions">
+          <%= form_with url: subscriptions_path, method: :get, html: { class: 'mb-4', data: { search_subscriptions_target: 'form' } } do |f| %>
+            <%= f.text_field :query,
+                            class: "form-control",
+                            placeholder: 'Type a subscription title',
+                            value: params[:query],
+                            data: {
+                              search_subscriptions_target: 'input',
+                              action: 'keyup->search-subscriptions#update'
+                            } %>
+          <% end %>
+
+
+  <div data-search-subscriptions-target="list">
+    <p class="h3">
+      <% if params[:query].blank? %>
+        <%= pluralize subscriptions.count, 'subscription' %> available
+      <% else %>
+        <%= pluralize subscriptions.count, 'result' %> for <code><%= params[:query] %></code>
+      <% end %>
+    </p>
+    <div class="subscriptions">
+      <% subscriptions.each do |subscription| %>
+        <%= render 'subscription_infos', subscription: subscription %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+##Dont worry, pls, everything works fine. This is just an AJAX code for later usage...
