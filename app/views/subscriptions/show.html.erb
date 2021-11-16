@@ -1,17 +1,22 @@
-    <div class="col-3 mb-4">
-    <h2>Can you see this?</h2>
-    </div>
+<div class="container">
+  <div class="justify-content-start mt-5 p-4">
+    <h2 class="mt-3"><%= @subscription.username %></h2>
+      <h3> <%= @subscription.title %> </h3>
+      <h4> from <%= @subscription.category %></h4>
+      <h4> <strong><%= @subscription.price %></strong> <%=@subscription.currency%> </h4>
+      <p> this is a <strong><em><%= @subscription.sub_type %></em></strong> subscription ending on <%= @subscription.end_date%></p>
+        <%= link_to 'Link', @subscription.link, class: 'btn btn-info' %>
 
-<h3> <%= @subscription.title %> </h3>
-<h4> <%= @subscription.price %> </h4>
-<h4> from <%= @subscription.category %></h4>
-  <%= link_to subscription_path(@subscription),
-              method: :delete,
-              class: 'btn btn-danger btn-xs',
-              data: { confirm: 'Are you sure ?'} do %>
-    <i class="fas fa-trash-alt"></i>
-  <% end %>
-
-  <%= link_to 'Edit', edit_subscription_path(@subscription), class: 'btn btn-warning' %>
-
-  <%= link_to 'Back', subscriptions_path, class: 'btn btn-secondary' %>
+      <div>
+        <br>
+          <%= link_to subscription_path(@subscription),
+                      method: :delete,
+                      class: 'btn btn-danger btn-xs',
+                      data: { confirm: 'Are you sure ?'} do %>
+            <i class="fas fa-trash-alt"></i>
+          <%end%>
+        <%= link_to 'Edit', edit_subscription_path(@subscription), class: 'btn btn-warning' %>
+        <%= link_to 'Back', subscriptions_path, class: 'btn btn-secondary' %>
+      </div>
+  </div>
+</div>
