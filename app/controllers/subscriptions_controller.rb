@@ -4,7 +4,14 @@ class SubscriptionsController < ApplicationController
 
   def index
     @subscriptions = current_user.subscriptions
-    @subscriptions = Subscription.all
+
+    # SEARCH FORM
+    if params[:query].present?
+      @subscriptions = Subscription.search(params[:query])
+    else
+      @subscriptions = Subscription.all
+    end
+
   end
 
   def new
@@ -12,7 +19,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def show
-    @subscriptions = Subscription.all
   end
 
   def create

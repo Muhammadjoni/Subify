@@ -5,12 +5,20 @@ class Subscription < ApplicationRecord
   validates :end_date, presence: true
   validates :notify_before, presence: true
 
-  CATEGORY = %W(Entertainment Education Finance Utility-Bills Others)
+  CATEGORY = %W(Entertainment Education Finance Others)
   validates :category, inclusion: { in: CATEGORY }
 
   CURRENCY = %W(USD EURO AED GBP Unknown)
   validates :currency, inclusion: { in: CURRENCY }, presence: true, if: :price?
 
-  SUB_TYPE = %W(Weekly Monthly Annual)
+  SUB_TYPE = %W(weekly monthly annual)
   validates :sub_type, inclusion: { in: SUB_TYPE }
+
+  include PgSearch::Model
+  pg_search_scope :search,
+    against: [ :title, :category ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
 end
