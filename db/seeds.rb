@@ -1,10 +1,12 @@
 puts "Cleaning up database..."
+
 User.destroy_all
 Subscription.destroy_all
 puts "Database cleaned"
 
 puts "Creating the Users"
-p user = User.create(
+
+user = User.create(
   first_name: 'Bruce',
   last_name: 'Wayne',
   email: 'bruce.wayne@gotham.com',
@@ -14,7 +16,6 @@ p user = User.create(
 )
 
 puts "Done with the Users Creation"
-
 puts "Creating the subscriptions"
 
 user.subscriptions.create(
@@ -74,5 +75,5 @@ user.subscriptions.create(
   price: 20,
   currency: 'AED',
   notify: true,
-  category: 'Utility bills'
+  category: 'Utility-Bills'
 )

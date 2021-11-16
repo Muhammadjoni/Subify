@@ -1,0 +1,25 @@
+
+<%= simple_form_for(subscription) do |f| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-5 align-self-start">
+        <%= f.input :title %>
+        <%= f.input :username %>
+        <%= f.input :category, collection: Subscription::CATEGORY %>
+      </div>
+      <div class="col-5 align-self-center">
+        <%= f.input :sub_type, collection: Subscription::SUB_TYPE %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.input :notes %>
+      </div>
+      <div class="col-2 align-self-end">
+        <%= f.input :notify_before %>
+        <%= f.input :price %>
+        <%= f.input :currency, collection: Subscription::CURRENCY %>
+        <%= f.input :notify, as: :boolean, checked_value: true, unchecked_value: false %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>
