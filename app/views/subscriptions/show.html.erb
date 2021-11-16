@@ -1,7 +1,11 @@
+    <div class="col-3 mb-4">
+    <h2>Can you see this?</h2>
+    </div>
+
 <h3> <%= @subscription.title %> </h3>
 <h4> <%= @subscription.price %> </h4>
 <h4> from <%= @subscription.category %></h4>
-  <%= link_to subscriptions_path(@subscription),
+  <%= link_to subscription_path(@subscription),
               method: :delete,
               class: 'btn btn-danger btn-xs',
               data: { confirm: 'Are you sure ?'} do %>
