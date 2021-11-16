@@ -4,7 +4,6 @@ class SubscriptionsController < ApplicationController
 
   def index
     @subscriptions = current_user.subscriptions
-    @subscriptions = Subscription.all
   end
 
   def new
@@ -12,7 +11,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def show
-    @subscriptions = Subscription.all
   end
 
   def create
