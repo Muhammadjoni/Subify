@@ -1,10 +1,13 @@
 
 .banner {
   background-size: cover;
-  background-position: inherit;
+  background-position: center;
   padding: 150px 0;
   width: 100%;
-  height: auto;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  text-align: center;
 }
 
 .banner h1 {
