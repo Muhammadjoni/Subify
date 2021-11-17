@@ -16,11 +16,30 @@
 
     <div class="category-box">
 
+
       <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
       <% grouped_subscriptions.each_pair do |key, subscriptions| %>
         <%= "Category #{key}" %>
         <br>
         <div class="subscriptions-list-wraper" id="subscriptions">
+
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="center-block">
+  <%= form_tag subscriptions_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a subscription"
+      %>
+    </div>
+    <div class="center-block">
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
 
           <div class="row">
             <div class="col-md">
