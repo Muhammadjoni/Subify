@@ -1,43 +1,33 @@
 
-<div class="container justify-content-center my-3">
+<div class="container d-lg-flex">
   <div class="row">
 
     <div class="col-3">
-    <h2>Can you see this?</h2>
+      <h2>PROFIL</h2>
     </div>
 
-    <div class="col-3">
-    </div>
-
-    <div class="col-3">
-        </div>
-
-  </div>
-</div>
-
-<div class="row justify-content-center">
-  <div class="center-block">
-  <%= form_tag subscriptions_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a subscription"
-      %>
-    </div>
-    <div class="center-block">
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
-
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <div id="subscriptions">
-        <% @subscriptions.each do |subscription| %>
-          <h4><%= link_to subscription.title, subscription_path(subscription) %></h4>
-          <p> from <%= subscription.category %></p>
+    <div class="col-9">
+      <div class="row justify-content-center">
+        <div class="center-block">
+        <%= form_tag subscriptions_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a subscription"
+            %>
+          </div>
+          <div class="center-block">
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          </div>
         <% end %>
+      </div>
+      <div class="row justify-content-center">
+        <div id="subscriptions">
+          <% @subscriptions.each do |subscription| %>
+            <h4><%= link_to subscription.title, subscription_path(subscription) %></h4>
+            <p> from <%= subscription.category %></p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
