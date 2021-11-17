@@ -1,5 +1,5 @@
 
-<div class="container ">
+<div class="container">
   <div class="row">
     <div class="col-md">
       <h1 class="h2 my-3 d-flex justify-content-center mt-5">Your subscriptions</h1>
@@ -12,51 +12,34 @@
           %>
         <% end %>
 
-    <div class="spacer-md"></div>
+      <div class="spacer-md"></div>
 
-    <div class="category-box">
+        <div class="category-box">
 
+          <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
+          <% grouped_subscriptions.each_pair do |key, subscriptions| %>
+            <%= "Category #{key}" %>
+            <br>
 
-      <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
-      <% grouped_subscriptions.each_pair do |key, subscriptions| %>
-        <%= "Category #{key}" %>
-        <br>
-        <div class="subscriptions-list-wraper" id="subscriptions">
-
-  </div>
-</div>
-
-<div class="row justify-content-center">
-  <div class="center-block">
-  <%= form_tag subscriptions_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a subscription"
-      %>
-    </div>
-    <div class="center-block">
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
-
-          <div class="row">
-            <div class="col-md">
-              <div class="cards" >
-                <%  subscriptions.each do |subscription|  %>
-                <div class="card-category" style="background-image:
-                  linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
-                  url ()">
-                    <%# url(<%=  cl_img "#{key}"subscription.avatar %>
-                  <%= link_to subscription.title, subscription_path(subscription) %>
+            <div class="subscriptions-list-wraper" id="subscriptions">
+              <div class="row">
+                <div class="col-md">
+                  <div class="cards" >
+                    <%  subscriptions.each do |subscription|  %>
+                    <div class="card-category" style="background-image:
+                      linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                      url ()">
+                        <%# url(<%=  cl_img "#{key}"subscription.avatar %>
+                      <%= link_to subscription.title, subscription_path(subscription) %>
+                    </div>
+                    <% end %>
+                  </div>
                 </div>
-                <% end %>
               </div>
             </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
