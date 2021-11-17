@@ -3,6 +3,7 @@ class SubscriptionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    @subscriptions = Subscription.all
     @subscriptions = current_user.subscriptions
 
     # SEARCH FORM
@@ -11,6 +12,7 @@ class SubscriptionsController < ApplicationController
     else
       @subscriptions = Subscription.all
     end
+
 
   end
 
@@ -30,6 +32,19 @@ class SubscriptionsController < ApplicationController
     else
       render :new
     end
+
+    # respond_to do |format|
+
+    #   if @subscription.save
+    #     message = "The subscription '#{@subscription.title}' was just added to Subify."
+    #     SendWhatsappMessage.new(message).call
+    #     format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
+    #     format.json { render :show, status: :created, location: @subscripiton }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @subscription.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def edit
