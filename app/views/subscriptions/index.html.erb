@@ -1,29 +1,47 @@
 
-<div class="container d-lg-flex">
+<div class="container">
   <div class="row">
     <%# PROFIL div %>
-        <div class="col-3">
-          <h2>PROFIL</h2>
+        <div class="col-3 justify-content-start mt-5 profile">
+          <h2>My Profile</h2>
+          <br>
+          <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered " alt="">
+          <br>
+          <%= current_user.first_name %>
+          <%= current_user.last_name %>
+         <h5> Sms :</h5>
+         <p> <%= current_user.sms_number %> </p>
+         <h5>  Whatsapp :</h5>
+         <p><%= current_user.whatsapp_number %> </p>
+         <p><%= current_user.email %> </p>
+
+         <%# <%= current_user.grouped_subscriptions %>
+
         </div>
     <%# Subs Cards %>
       <div class="col-9">
         <h1 class="d-flex justify-content-center mt-5">Your subscriptions</h1>
 
-          <div class="justify-content-center">
-            <%= form_tag subscriptions_path, method: :get do %>
-                <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control",
-                  placeholder: "Find a subscription" %>
-            <% end %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <div class="d-flex">
+            <div>
+              <%= form_tag subscriptions_path, method: :get do %>
+                  <%= text_field_tag :query,
+                    params[:query],
+                    class: "form-control",
+                    placeholder: "Find a subscription" %>
+            </div>
+
+                <div>
+                  <%= submit_tag "Search", class: "btn btn-primary" %>
+                </div>
+              <% end %>
           </div>
 
 
           <div class="category-box">
             <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
             <% grouped_subscriptions.each_pair do |key, subscriptions| %>
-              <%= "Category #{key}" %>
+              <h3 class="m-2"><%= "Category #{key}" %></h3>
                 <div class="subscriptions-list-wraper" id="subscriptions">
                   <div class="row">
                     <div class="col-md">
