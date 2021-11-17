@@ -1,44 +1,62 @@
 
-<div class="container justify-content-center my-3">
-  <div class="row">
-
-    <div class="col-3">
-
-    </div>
-
-    <div class="col-3">
-    </div>
-
-    <div class="col-3">
-        </div>
-
-  </div>
-</div>
-
-<div class="row justify-content-center">
-  <div class="center-block">
-  <%= form_tag subscriptions_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a subscription"
-      %>
-    </div>
-    <div class="center-block">
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
-
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <div id="subscriptions">
-        <% @subscriptions.each do |subscription| %>
-          <h4><%= link_to subscription.title, subscription_path(subscription) %></h4>
-          <p> from <%= subscription.category %></p>
-        <% end %>
+  <div class="row">
+    <%# PROFIL div %>
+        <div class="col-3 justify-content-start mt-5 profile">
+          <h2>My Profile</h2>
+          <br>
+          <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered " alt="">
+          <br>
+          <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+         <h5> SMS number :</h5>
+         <p> <%= current_user.sms_number %> </p>
+         <h5>  Whatsapp number:</h5>
+         <p><%= current_user.whatsapp_number %> </p>
+         <h5> Email :</h5>
+         <p><%= current_user.email %> </p>
+
+        </div>
+    <%# Subs Cards %>
+      <div class="col-9">
+        <h1 class="d-flex justify-content-center mt-5">Your subscriptions</h1>
+
+          <div class="d-flex">
+            <div class="form-control-index">
+              <%= form_tag subscriptions_path, method: :get do %>
+                  <%= text_field_tag :query,
+                    params[:query],
+                    class: "form-control",
+                    placeholder: "Find a subscription" %>
+            </div>
+
+                <div>
+                  <%= submit_tag "Search", class: "btn btn-primary" %>
+                </div>
+              <% end %>
+          </div>
+
+
+          <div class="category-box">
+            <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
+            <% grouped_subscriptions.each_pair do |key, subscriptions| %>
+              <h3 class="m-2"><%= "Category #{key}" %></h3>
+                <div class="subscriptions-list-wraper" id="subscriptions">
+                  <div class="row">
+                    <div class="col-md">
+                      <div class="cards" >
+                        <%  subscriptions.each do |subscription|  %>
+                          <div class="card-category" style="background-image:
+                            linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                            url ()">
+                              <%# url(<%=  cl_img "#{key}"subscription.avatar %>
+                            <%= link_to subscription.title, subscription_path(subscription) %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
       </div>
-    </div>
   </div>
 </div>

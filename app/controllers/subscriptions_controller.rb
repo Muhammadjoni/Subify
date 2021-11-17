@@ -3,6 +3,7 @@ class SubscriptionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    @subscriptions = Subscription.all
     @subscriptions = current_user.subscriptions
 
     # SEARCH FORM
@@ -59,10 +60,6 @@ class SubscriptionsController < ApplicationController
     @subscription.destroy
     redirect_to subscriptions_path
   end
-
-  # def my_subscriptions
-  #   @subscriptions = current_user.subscriptions
-  # end
 
   private
 
