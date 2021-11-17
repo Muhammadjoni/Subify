@@ -7,15 +7,13 @@
           <br>
           <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered " alt="">
           <br>
-          <%= current_user.first_name %>
-          <%= current_user.last_name %>
-         <h5> Sms :</h5>
+          <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
+         <h5> SMS number :</h5>
          <p> <%= current_user.sms_number %> </p>
-         <h5>  Whatsapp :</h5>
+         <h5>  Whatsapp number:</h5>
          <p><%= current_user.whatsapp_number %> </p>
+         <h5> Email :</h5>
          <p><%= current_user.email %> </p>
-
-         <%# <%= current_user.grouped_subscriptions %>
 
         </div>
     <%# Subs Cards %>
@@ -23,7 +21,7 @@
         <h1 class="d-flex justify-content-center mt-5">Your subscriptions</h1>
 
           <div class="d-flex">
-            <div>
+            <div class="form-control-index">
               <%= form_tag subscriptions_path, method: :get do %>
                   <%= text_field_tag :query,
                     params[:query],
