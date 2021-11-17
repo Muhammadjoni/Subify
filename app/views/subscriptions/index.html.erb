@@ -1,16 +1,27 @@
 
-<div class="container justify-content-center my-3">
+<div class="container ">
   <div class="row">
+    <div class="col-md">
+      <h1 class="h2 my-3 d-flex justify-content-center mt-5">Your subscriptions</h1>
 
-    <div class="col-3">
-    <h2>Can you see this?</h2>
-    </div>
+        <%= form_tag subscriptions_path, method: :get do %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a subscription"
+          %>
+        <% end %>
 
-    <div class="col-3">
-    </div>
+    <div class="spacer-md"></div>
 
-    <div class="col-3">
-        </div>
+    <div class="category-box">
+
+
+      <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
+      <% grouped_subscriptions.each_pair do |key, subscriptions| %>
+        <%= "Category #{key}" %>
+        <br>
+        <div class="subscriptions-list-wraper" id="subscriptions">
 
   </div>
 </div>
@@ -30,15 +41,22 @@
   <% end %>
 </div>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <div id="subscriptions">
-        <% @subscriptions.each do |subscription| %>
-          <h4><%= link_to subscription.title, subscription_path(subscription) %></h4>
-          <p> from <%= subscription.category %></p>
-        <% end %>
-      </div>
+          <div class="row">
+            <div class="col-md">
+              <div class="cards" >
+                <%  subscriptions.each do |subscription|  %>
+                <div class="card-category" style="background-image:
+                  linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                  url ()">
+                    <%# url(<%=  cl_img "#{key}"subscription.avatar %>
+                  <%= link_to subscription.title, subscription_path(subscription) %>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
