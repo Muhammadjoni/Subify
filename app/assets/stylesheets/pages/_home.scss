@@ -1,3 +1,8 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
@@ -18,7 +23,7 @@ a, a:hover, a:focus {
 h1, h2 {
     margin-top: 10px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 38px;
+    font-size: 30px;
     font-weight: 300;
     color: #555;
     line-height: 50px;
@@ -43,39 +48,41 @@ h1, h2 {
 }
 
 .services-box h3 {
+    font-size: 25px;
     margin-top: 0;
     padding: 0 0 10px 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
-.about-us-box {
-    margin-top: 100px;
+.how-it-works-box {
+    margin-top: 120px;
 }
 
-.about-us-box-text {
+.how-it-works-box-text {
     padding-right: 30px;
     text-align: left;
 }
 
-.about-us-box-text h3 {
+.how-it-works-box-text h3 {
     margin-top: 0;
 }
 
-.about-us-box-text .medium-paragraph {
+.how-it-works-box-text .medium-paragraph {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.about-us-box-text a {
+.how-it-works-box-text a {
     border-bottom: 1px dashed #9b59b6;
 }
 
-.about-us-box-text a:hover,
-.about-us-box-text a:focus {
+.how-it-works-box-text a:hover,
+.how-it-works-box-text a:focus {
     border: 0;
 }
 
-.about-us-box-img img {
+.how-it-works-box-img img {
     border-radius: 4px;
     max-width: 100%;
     vertical-align: middle;
@@ -85,6 +92,8 @@ h1, h2 {
 
 .testimonials-container {
     padding-bottom: 70px;
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
 
 .testimonial-list {
@@ -138,4 +147,11 @@ h1, h2 {
 .testimonial-list .nav-tabs li a.active:focus {
     background: #72b8d3;
     border: 0;
+}
+
+.contact-us-container {
+  padding-bottom: 70px;
+  margin-top: 50px;
+  margin-bottom: 70px;
+  text-align: left;
 }
