@@ -1,34 +1,46 @@
 
 <div class="container d-lg-flex">
   <div class="row">
+    <%# PROFIL div %>
+        <div class="col-3">
+          <h2>PROFIL</h2>
+        </div>
+    <%# Subs Cards %>
+      <div class="col-9">
+        <h1 class="d-flex justify-content-center mt-5">Your subscriptions</h1>
 
-    <div class="col-3">
-      <h2>PROFIL</h2>
-    </div>
-
-    <div class="col-9">
-      <div class="row justify-content-center">
-        <div class="center-block">
-        <%= form_tag subscriptions_path, method: :get do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Find a subscription"
-            %>
-          </div>
-          <div class="center-block">
+          <div class="justify-content-center">
+            <%= form_tag subscriptions_path, method: :get do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Find a subscription" %>
+            <% end %>
             <%= submit_tag "Search", class: "btn btn-primary" %>
           </div>
-        <% end %>
+
+
+          <div class="category-box">
+            <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
+            <% grouped_subscriptions.each_pair do |key, subscriptions| %>
+              <%= "Category #{key}" %>
+                <div class="subscriptions-list-wraper" id="subscriptions">
+                  <div class="row">
+                    <div class="col-md">
+                      <div class="cards" >
+                        <%  subscriptions.each do |subscription|  %>
+                          <div class="card-category" style="background-image:
+                            linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                            url ()">
+                              <%# url(<%=  cl_img "#{key}"subscription.avatar %>
+                            <%= link_to subscription.title, subscription_path(subscription) %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
       </div>
-      <div class="row justify-content-center">
-        <div id="subscriptions">
-          <% @subscriptions.each do |subscription| %>
-            <h4><%= link_to subscription.title, subscription_path(subscription) %></h4>
-            <p> from <%= subscription.category %></p>
-          <% end %>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

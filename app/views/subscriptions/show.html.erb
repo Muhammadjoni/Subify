@@ -7,16 +7,16 @@
       <p> this is a <strong><em><%= @subscription.sub_type %></em></strong> subscription ending on <%= @subscription.end_date%></p>
         <%= link_to 'Link', @subscription.link, class: 'btn btn-info' %>
 
-      <div>
-        <br>
-          <%= link_to subscription_path(@subscription),
-                      method: :delete,
-                      class: 'btn btn-danger btn-xs',
-                      data: { confirm: 'Are you sure ?'} do %>
-            <i class="fas fa-trash-alt"></i>
-          <%end%>
-        <%= link_to 'Edit', edit_subscription_path(@subscription), class: 'btn btn-warning' %>
-        <%= link_to 'Back', subscriptions_path, class: 'btn btn-secondary' %>
-      </div>
-  </div>
-</div>
+<h3> <%= @subscription.title %> </h3>
+<h4> <%= @subscription.price %> </h4>
+<h4> from <%= @subscription.category %></h4>
+  <%= link_to subscription_path(@subscription),
+              method: :delete,
+              class: 'btn btn-danger btn-xs',
+              data: { confirm: 'Are you sure ?'} do %>
+    <i class="fas fa-trash-alt"></i>
+  <% end %>
+  <%= link_to 'Edit', edit_subscription_path(@subscription), class: 'btn btn-warning' %>
+
+  <%= link_to 'Back', subscriptions_path, class: 'btn btn-secondary' %>
+
