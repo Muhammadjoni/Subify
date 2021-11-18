@@ -36,6 +36,21 @@
           </div>
         </li>
       <% else %>
+        <li class="nav-item active px-3">
+          <%= link_to "Home", root_path , class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#services">Our Services</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#howitworks">How it works</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#testimonials">Our Clients</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#aboutus">About Us</a>
+        </li>
         <li class="nav-item">
          <%= link_to "Sign-up | Login", new_user_session_path, class: "nav-link" %>
         </li>
