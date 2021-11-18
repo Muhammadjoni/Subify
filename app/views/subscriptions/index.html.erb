@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row">
     <%# PROFIL div %>
-        <div class="col-3 justify-content-start mt-5 profile">
+        <div class="my-profile col-3 justify-content-start mt-5 profile">
           <h2>My Profile</h2>
           <br>
-          <i class="fas fa-user-ninja s-7"></i>
-          <i class="fas fa-camera"></i>
+          <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered " alt="">
+    
          <br>
           <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
          <h5> SMS number :</h5>
@@ -18,10 +18,14 @@
 
         </div>
     <%# Subs Cards %>
-      <div class="col-9">
+      <div class="search-column col-9">
         <h1 class="d-flex justify-content-center mt-5">Your subscriptions</h1>
+
+        <div class="search-bar d-flex">
+
           <a class="btn btn-ghost m-3" <%= link_to "Add subscriptions", new_subscription_path %></a>
           <div class="d-flex">
+
             <div class="form-control-index">
               <%= form_tag subscriptions_path, method: :get do %>
                   <%= text_field_tag :query,

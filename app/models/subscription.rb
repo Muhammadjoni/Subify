@@ -25,6 +25,7 @@ class Subscription < ApplicationRecord
       self.end_date = self.start_date + SUB_TYPES_TO_DAYS[self.sub_type]
       self.notification_date = self.start_date + SUB_TYPES_TO_DAYS[self.sub_type] - self.notify_before
 
+
       self.save
     end
   end

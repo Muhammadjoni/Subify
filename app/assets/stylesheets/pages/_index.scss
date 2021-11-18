@@ -4,3 +4,40 @@
 .form-control-index {
   width: 750px !important;
 }
+
+.search-column {
+  justify-content: right;
+  padding: 30px;
+  margin-left: 350px;
+}
+
+.search-bar {
+  border-style: double;
+  padding: 10px;
+  border-color: lightgray;
+  background-color: white;
+    input {
+      border: none;
+    }
+}
+
+.category-box {
+  padding: 30px;
+}
+
+.category-box h3 {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: #000;
+  line-height: 50px;
+}
+
+.my-profile {
+  padding-bottom: 30px;
+  padding-top: 15px;
+  background-color: rgba($color: lightgray, $alpha: 0.5);
+  color: #000;
+}
