@@ -12,8 +12,6 @@ class SubscriptionsController < ApplicationController
     else
       @subscriptions = Subscription.all
     end
-
-
   end
 
   def new
