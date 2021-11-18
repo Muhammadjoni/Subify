@@ -1,6 +1,8 @@
 .navbar-lewagon {
   justify-content: space-between !important;
+  font-weight: bolder;
   background-color: transparent;
+  opacity: 0.8;
   transition: 0.5s background-color ease;
   .nav-link {
     color: white !important;
@@ -16,7 +18,7 @@
 }
 
 .navbar-lewagon-white {
-  background-color: white;
+  background-color: rgb(250, 249, 249);
   .nav-link {
     color: black !important;
   }

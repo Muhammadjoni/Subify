@@ -15,7 +15,7 @@ body {
 strong { font-weight: 600; }
 
 a, a:hover, a:focus {
-    color: #9b59b6;
+    color: black;
     text-decoration: none;
     transition: all .3s;
 }
@@ -24,7 +24,7 @@ h1, h2 {
     margin-top: 10px;
     font-family: 'Montserrat', sans-serif;
     font-size: 30px;
-    font-weight: 300;
+    font-weight: 800;
     color: #555;
     line-height: 50px;
 }
@@ -33,7 +33,10 @@ h1, h2 {
 .services-box {
     padding-top: 30px;
     text-align: left;
+
 }
+
+.general-service {}
 
 .services-box .services-box-icon {
     width: 80px;
@@ -49,7 +52,7 @@ h1, h2 {
 
 .services-box h3 {
     font-size: 25px;
-    margin-top: 0;
+    margin-top: 15px;
     padding: 0 0 10px 0;
     font-family: 'Montserrat', sans-serif;
 }
