@@ -5,8 +5,15 @@
         <div class="col-3 justify-content-start mt-5 profile">
           <h2>My Profile</h2>
           <br>
-          <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered " alt="">
-          <br>
+          <%# <%= cl_image_tag avatar.key %>
+          <%# <% if @user.avatar.attached? %>
+          <%# <%= cl_image_tag("user") %>
+          <%# <% end %>
+          <%# <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered " alt=""> %>
+          <i class="fas fa-user-ninja s-7"></i>
+          <i class="fas fa-camera"></i>
+         <br>
+          <%# url(<%=  cl_img "#{key}"subscription.avatar %>
           <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
          <h5> SMS number :</h5>
          <p> <%= current_user.sms_number %> </p>
@@ -35,7 +42,6 @@
               <% end %>
           </div>
 
-
           <div class="category-box">
             <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
             <% grouped_subscriptions.each_pair do |key, subscriptions| %>
@@ -48,7 +54,6 @@
                           <div class="card-category" style="background-image:
                             linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
                             url ()">
-                              <%# url(<%=  cl_img "#{key}"subscription.avatar %>
                             <%= link_to subscription.title, subscription_path(subscription) %>
                           </div>
                         <% end %>

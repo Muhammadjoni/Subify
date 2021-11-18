@@ -16,6 +16,8 @@
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
+          <%= f.label "Profile Photo" %>
+          <%= f.input :avatar, as: :file, input_html: { multiple: true }, class: "rounded-4" %>
 
           <%= f.button :submit, "Sign up" %>
           <%= render "devise/shared/links" %>
