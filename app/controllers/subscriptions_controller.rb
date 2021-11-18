@@ -60,10 +60,6 @@ class SubscriptionsController < ApplicationController
     redirect_to subscriptions_path
   end
 
-  # def my_subscriptions
-  #   @subscriptions = current_user.subscriptions
-  # end
-
   private
 
   def set_subscription

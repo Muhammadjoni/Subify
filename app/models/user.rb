@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :subscriptions, dependent: :destroy
   validates :first_name, presence: true
+  has_one_attached :avatar
 end
