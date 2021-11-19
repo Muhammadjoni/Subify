@@ -17,7 +17,7 @@
         <%= f.input :price %>
         <%= f.input :currency, collection: Subscription::CURRENCY %>
         <%= f.input :notify, as: :boolean, checked_value: true, unchecked_value: false %>
-        <%= f.button :submit, class: 'btn btn-primary' %>
+        <%= f.button :submit, subscriptions_path(subscription), class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
