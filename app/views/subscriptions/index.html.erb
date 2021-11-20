@@ -21,53 +21,23 @@
          <h5> Email :</h5>
          <p><%= current_user.email %> </p>
         </div>
+
+
     <%# Subs Cards %>
       <div class="search-column col-9">
         <h1 class="d-flex justify-content-center mt-5">Your subscriptions</h1>
-        <a class="btn btn-ghost m-3" <%= link_to "Add subscriptions", new_subscription_path %>
-        </a>
-        <div class="search-bar d-flex">
-            <div class="form-control-index">
-              <%= form_tag subscriptions_path, method: :get do %>
-                  <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control",
-                    placeholder: "Find a subscription" %>
-            </div>
-                <div>
-                  <%= submit_tag "Search" , class: "btn btn-gradient" %>
-                </div>
+        <%= link_to "Add subscriptions", new_subscription_path, class: "btn btn-ghost m-3" %>
+        <div data-controller="search-subscriptions">>
+              <%= form_with url: subscriptions_path, method: :get, html: { class: 'mb-4', data: { search_subscriptions_target: 'form' } } do |f| %>
+                <%= f.text_field :query,
+                            class: "form-control",
+                            placeholder: "Search your subscription",
+                            value: params[:query],
+                            data: { search_subscriptions_target: 'searchInput', action: 'keyup->search-subscriptions#update' } %>
               <% end %>
-          </div>
-          <div class="category-box">
-            <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
-            <% grouped_subscriptions.each_pair do |key, subscriptions| %>
-              <h3 class="m-2"><%= "Category #{key}" %></h3>
-                <div class="subscriptions-list-wraper" id="subscriptions">
-                  <div class="row">
-                    <div class="col-md">
-                      <div class="cards">
-                        <%  subscriptions.each do |subscription|  %>
-                            <% border = (subscription.end_date - Date.today).to_i %>
-                            <% if border < 2 %>
-                              <% color = "danger" %>
-                            <% elsif border > 2 && border < 7 %>
-                              <% color = "warning" %>
-                            <% else %>
-                              <% color = "success" %>
-                            <% end %>
-                          <div class="card p-5 border-top-0 border-right-0 border-bottom-0 border-xl border-<%= color %> " style="background-image:
-                            linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
-                            url ()">
-                            <%= link_to subscription.title, subscription_path(subscription) %>
-                          </div>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            <% end %>
-          </div>
+              <%= render 'list', subscriptions: @subscriptions %>
+        </div>
+
       </div>
   </div>
 </div>

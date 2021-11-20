@@ -1,0 +1,40 @@
+<div data-search-subscriptions-target="list">
+  <div class="category-box">
+    <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
+    <% grouped_subscriptions.each_pair do |key, subscriptions| %>
+      <h3 class="m-2"><%= "#{key}" %></h3>
+
+      <div class="subscriptions-list-wraper" id="subscriptions">
+        <div class="row">
+          <div class="col-md">
+            <p class="h3">
+              <% if params[:query].blank? %>
+                <%= pluralize subscriptions.count, 'subscription' %> available
+              <% else %>
+                <%= pluralize subscriptions.count, 'result' %> for <code><%= params[:query] %></code>
+              <% end %>
+            </p>
+
+            <div class="cards">
+              <%  subscriptions.each do |subscription|  %>
+                  <% border = (subscription.end_date - Date.today).to_i %>
+                  <% if border < 2 %>
+                    <% color = "danger" %>
+                  <% elsif border > 2 && border < 7 %>
+                    <% color = "warning" %>
+                  <% else %>
+                    <% color = "success" %>
+                  <% end %>
+                <div class="card p-5 border-top-0 border-right-0 border-bottom-0 border-xl border-<%= color %> " style="background-image:
+                  linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                  url ()">
+                  <%= link_to subscription.title, subscription_path(subscription) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
