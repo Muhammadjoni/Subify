@@ -15,6 +15,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def new
+    @subscriptions = Subscription.all
     @subscription = Subscription.new
   end
 

@@ -1,17 +1,16 @@
-
 <div class="container">
   <div class="row">
     <%# PROFIL div %>
-        <div class="col-3 justify-content-start mt-5 profile">
+        <div class="my-profile col-3 justify-content-start mt-5 profile">
           <h2>My Profile</h2>
           <br>
           <%# <%= cl_image_tag avatar.key %>
           <%# <% if @user.avatar.attached? %>
           <%# <%= cl_image_tag("user") %>
           <%# <% end %>
-          <%# <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered " alt=""> %>
-          <i class="fas fa-user-ninja s-7"></i>
-          <i class="fas fa-camera"></i>
+          <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered " alt="">
+          <%# <i class="fas fa-user-ninja s-7"></i> %>
+          <%# <i class="fas fa-camera"></i> %>
          <br>
           <%# url(<%=  cl_img "#{key}"subscription.avatar %>
           <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
@@ -21,13 +20,13 @@
          <p><%= current_user.whatsapp_number %> </p>
          <h5> Email :</h5>
          <p><%= current_user.email %> </p>
-
         </div>
     <%# Subs Cards %>
-      <div class="col-9">
+      <div class="search-column col-9">
         <h1 class="d-flex justify-content-center mt-5">Your subscriptions</h1>
-
-          <div class="d-flex">
+        <a class="btn btn-ghost m-3" <%= link_to "Add subscriptions", new_subscription_path %>
+        </a>
+        <div class="search-bar d-flex">
             <div class="form-control-index">
               <%= form_tag subscriptions_path, method: :get do %>
                   <%= text_field_tag :query,
@@ -35,13 +34,11 @@
                     class: "form-control",
                     placeholder: "Find a subscription" %>
             </div>
-
                 <div>
-                  <%= submit_tag "Search", class: "btn btn-primary" %>
+                  <%= submit_tag "Search" , class: "btn btn-gradient" %>
                 </div>
               <% end %>
           </div>
-
           <div class="category-box">
             <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
             <% grouped_subscriptions.each_pair do |key, subscriptions| %>
@@ -49,9 +46,17 @@
                 <div class="subscriptions-list-wraper" id="subscriptions">
                   <div class="row">
                     <div class="col-md">
-                      <div class="cards" >
+                      <div class="cards">
                         <%  subscriptions.each do |subscription|  %>
-                          <div class="card-category" style="background-image:
+                            <% border = (subscription.end_date - Date.today).to_i %>
+                            <% if border < 2 %>
+                              <% color = "danger" %>
+                            <% elsif border > 2 && border < 7 %>
+                              <% color = "warning" %>
+                            <% else %>
+                              <% color = "success" %>
+                            <% end %>
+                          <div class="card p-5 border-top-0 border-right-0 border-bottom-0 border-xl border-<%= color %> " style="background-image:
                             linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
                             url ()">
                             <%= link_to subscription.title, subscription_path(subscription) %>
@@ -62,6 +67,7 @@
                   </div>
                 </div>
             <% end %>
+          </div>
       </div>
   </div>
 </div>
