@@ -12,6 +12,11 @@ class SubscriptionsController < ApplicationController
     else
       @subscriptions = Subscription.all
     end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'subscriptions/list', locals: { subscriptions: @subscripitons }, formats: [:html] }
+    end
   end
 
   def new
