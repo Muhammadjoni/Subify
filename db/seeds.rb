@@ -20,8 +20,8 @@ puts "Creating the subscriptions"
 
 user.subscriptions.create(
   title: 'Netflix Standard',
-  start_date: '2021-02-03',
-  end_date: '2022-02-03',
+  start_date: '2021-02-24',
+  end_date: '2022-02-24',
   sub_type: 'monthly',
   notify_before: 1,
   price: 30,
