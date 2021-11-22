@@ -37,7 +37,7 @@ class SubscriptionsController < ApplicationController
     @subscription.user = current_user
 
     if @subscription.save
-      redirect_to @subscription, notice: 'Subscription was successfully created.'
+      redirect_to subscriptions_path, notice: 'Subscription was successfully created.'
     else
       render :new
     end
