@@ -51,6 +51,7 @@
             <li class="nav-item" role="list">
               <a class="tab-underlined active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">Subscriptions</a>
             </li>
+
             <li class="nav-item" role="graph">
               <a class="tab-underlined" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Graphs</a>
             </li>
@@ -58,7 +59,7 @@
 
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
-              Place all the cards
+              <%= render 'list', subscriptions: @subscriptions %>
             </div>
             <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
               <div class="d-flex justify-content-around align-items-center mt-5">
