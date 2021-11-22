@@ -7,29 +7,60 @@
       <div class="subscriptions-list-wraper" id="subscriptions">
         <div class="row">
           <div class="col-md">
-            <p class="h3">
+            <div class="h3">
               <% if params[:query].blank? %>
                 <%= pluralize subscriptions.count, 'subscription' %> available
               <% else %>
                 <%= pluralize subscriptions.count, 'result' %> for <code><%= params[:query] %></code>
               <% end %>
-            </p>
-
+            </div>
             <div class="cards">
+
               <%  subscriptions.each do |subscription|  %>
-                  <% border = (subscription.end_date - Date.today).to_i %>
-                  <% if border < 2 %>
+
+                  <% border = (subscription.notification_date - Date.today).to_i %>
+                  <% if border < 5 %>
                     <% color = "danger" %>
-                  <% elsif border > 2 && border < 7 %>
+                  <% elsif border > 5 && border < 14 %>
                     <% color = "warning" %>
                   <% else %>
                     <% color = "success" %>
                   <% end %>
-                <div class="card p-5 border-top-0 border-right-0 border-bottom-0 border-xl border-<%= color %> " style="background-image:
-                  linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
-                  url ()">
-                  <%= link_to subscription.title, subscription_path(subscription) %>
-                </div>
+
+
+                    <div class="subscription-card">
+
+                      <%# logo %>
+                      <div class="logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.designmantic.com/blog/wp-content/uploads/2016/07/Netflix-Revamps-Logo.jpg)"></div>
+
+
+                      <div class="title">
+                      <%= subscription.title %>
+                      </div>
+                      <div class="empty1"></div>
+                      <div class="text-muted">
+                        <span class="badge badge-light p-1"><%= subscription.category %></span>
+                      </div>
+                      <div class="empty2"></div>
+                      <div class="bottom-right" style="text-align-right">
+                        <div class="price d-flex justify-content-end">
+                          <span class="currency mb-0">
+                            <%= subscription.currency %>
+                          </span>
+
+                          <span class="value mb-0 pl-1">
+                            <%= subscription.price %>
+                          </span>
+                        </div>
+
+                        <span class="type mb-0">
+                          <%= subscription.sub_type %>
+                        </span>
+
+                      </div>
+                    </div>
+
+
               <% end %>
             </div>
           </div>
@@ -37,4 +68,5 @@
       </div>
     <% end %>
   </div>
+
 </div>

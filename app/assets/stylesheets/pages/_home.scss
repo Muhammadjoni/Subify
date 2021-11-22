@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'PT Sans', sans-serif;
     font-size: 16px;
     font-weight: 300;
     color: #888;
@@ -22,11 +22,11 @@ a, a:hover, a:focus {
 
 h1, h2 {
     margin-top: 10px;
-    font-family: 'Montserrat', sans-serif;
     font-size: 30px;
     font-weight: 800;
     color: #555;
     line-height: 50px;
+    font-family: 'PT Sans', sans-serif;
 }
 
 
@@ -52,7 +52,6 @@ h1, h2 {
     font-size: 25px;
     margin-top: 15px;
     padding: 0 0 10px 0;
-    font-family: 'Montserrat', sans-serif;
 }
 
 
@@ -74,9 +73,6 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-.how-it-works-box-text a {
-    border-bottom: 1px dashed #9b59b6;
-}
 
 .how-it-works-box-text a:hover,
 .how-it-works-box-text a:focus {
