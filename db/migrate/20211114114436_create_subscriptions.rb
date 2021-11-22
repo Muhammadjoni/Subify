@@ -9,8 +9,8 @@ class CreateSubscriptions < ActiveRecord::Migration[6.0]
       t.integer :price
       t.text :notes
       t.text :link
-      t.boolean :notify
-      t.integer :notify_before
+      t.boolean :notify, default: true
+      t.integer :notify_before, default: 1
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

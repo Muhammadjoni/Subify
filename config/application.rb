@@ -16,6 +16,8 @@ module Subify
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # config.action_mailbox.queues.routing = :another_queue
+
     config.active_job.queue_adapter = :sidekiq
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

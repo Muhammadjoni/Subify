@@ -1,22 +1,23 @@
 class Subscription < ApplicationRecord
   belongs_to :user
   validates :title, presence: true, uniqueness: true
-  validates :start_date, presence: true
-  validates :notify_before, presence: true
+  # validates :start_date,  presence: true
+  # validates :notify_before,  presence: true
+
 
   CATEGORY = %W(Entertainment Education Finance Others)
   validates :category, inclusion: { in: CATEGORY }
 
-  CURRENCY = %W(USD EURO AED GBP Unknown)
+  CURRENCY = %W(USD EUR AED GBP Unknown)
   validates :currency, inclusion: { in: CURRENCY }, presence: true, if: :price?
 
-  SUB_TYPE = %W(weekly monthly three-month annual)
+  SUB_TYPE = %W(weekly monthly three-months annual)
   validates :sub_type, inclusion: { in: SUB_TYPE }
 
   SUB_TYPES_TO_DAYS = {
     'weekly' => 7.days,
     'monthly' => 1.month,
-    'three-month' => 3.months,
+    'three-months' => 3.months,
     'annual' => 1.year
   }.freeze
 
