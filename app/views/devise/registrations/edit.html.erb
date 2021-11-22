@@ -23,7 +23,8 @@
 
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.label "Profile Photo" %>
+    <%= f.input :sms_number%>
+    <%= f.input :whatsapp_number%>
     <%= f.input :avatar, as: :file, input_html: { multiple: true }, class: "rounded-4" %>
     <%= f.button :submit, "Update" %>
   </div>
