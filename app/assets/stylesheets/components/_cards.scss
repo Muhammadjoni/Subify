@@ -16,6 +16,32 @@
   background: white;
   padding: 16px;
 
+.card {
+  margin-left: -20px;
+  font-size:  0.92rem;
+  margin-top: 15px;
+  border-radius: 4px;
+  color: rgb(120, 115, 115);
+  box-shadow:  0 1px 1px rgba(0,0,0,0.2);
+}
+
+.card .user-details {
+  width: 90%;
+  span {
+    font-size: 0.8rem;
+    background-color: papayawhip;
+  }
+  p {
+    margin-top: -.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 

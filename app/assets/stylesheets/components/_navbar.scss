@@ -24,3 +24,12 @@
   }
   box-shadow: 1px 1px 1px lightgrey;
 }
+
+.navbar-lewagon-important {
+  background-color: rgb(250, 249, 249) !important;
+  opacity: 1 !important;
+  box-shadow: 1px 1px 1px lightgrey !important;
+  .nav-link {
+    color: black !important;
+  }
+}

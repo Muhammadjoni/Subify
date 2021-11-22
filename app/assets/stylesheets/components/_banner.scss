@@ -9,6 +9,31 @@
   -ms-animation: fadeIn 1.5s;
 }
 
+.banner-show-page {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  border-radius: 10%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.edit-buttons {
+  opacity: 0.7;
+  }
+
+.edit-buttons:hover {
+  opacity:1.0;
+  transition: 0.8s;
+}
+
+
+.subscription-title {
+  color: white;
+  font-size: 75px;
+  text-align: left;
+ }
+
 @keyframes fadeIn {
   0% {opacity:0;}
   100% {opacity:1;}
