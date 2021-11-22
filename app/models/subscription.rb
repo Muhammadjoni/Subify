@@ -23,8 +23,7 @@ class Subscription < ApplicationRecord
   after_save do
     if self.saved_change_to_start_date? || self.saved_change_to_notify_before? || self.saved_change_to_sub_type?
       self.end_date = self.start_date + SUB_TYPES_TO_DAYS[self.sub_type]
-      self.notification_date = self.start_date + SUB_TYPES_TO_DAYS[self.sub_type] - self.notify_before
-
+      self.notification_date = self.start_date + self.trial - self.notify_before
 
       self.save
     end
