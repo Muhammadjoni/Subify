@@ -95,7 +95,7 @@ Rails.application.configure do
 
 
   # Action Mailbox to accept emails from an SMTP
-  config.action_mailbox.ingress = :relay
+  config.action_mailbox.ingress = :postmark
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector

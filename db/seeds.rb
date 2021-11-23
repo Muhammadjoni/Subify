@@ -7,9 +7,9 @@ puts "Database cleaned"
 puts "Creating the Users"
 
 user = User.create(
-  first_name: 'Bruce',
-  last_name: 'Wayne',
-  email: 'bruce.wayne@gotham.com',
+  first_name: 'Muhammadjon',
+  last_name: 'Rahimzod',
+  email: 'mrahimzod@gmail.com',
   password: 'batman',
   sms_number: '+971589199329',
   whatsapp_number: '+971589199329'
