@@ -1,3 +1,4 @@
 class ApplicationMailbox < ActionMailbox::Base
-  routing /subscription/ => :subscriptions
+  routing all: :subscriptions
+  # routing :all => :subscriptions
 end

@@ -1,33 +1,43 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <%# PROFIL div %>
-        <div class="my-profile col-3 justify-content-start mt-5 profile">
-          <h2>My Profile</h2>
-          <br>
-          <%# <%= cl_image_tag avatar.key %>
-          <%# <% if @user.avatar.attached? %>
-          <%# <%= cl_image_tag("user") %>
-          <%# <% end %>
-          <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered " alt="">
-          <%# <i class="fas fa-user-ninja s-7"></i> %>
-          <%# <i class="fas fa-camera"></i> %>
-         <br>
-          <%# url(<%=  cl_img "#{key}"subscription.avatar %>
-          <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
-         <h5> SMS number :</h5>
-         <p> <%= current_user.sms_number %> </p>
-         <h5>  Whatsapp number:</h5>
-         <p><%= current_user.whatsapp_number %> </p>
-         <h5> Email :</h5>
-         <p><%= current_user.email %> </p>
-        </div>
+    <%# PROFILE %>
+      <div class="col-3 justify-content-start">
+          <div class="card vh-100">
+            <div class="card-body d-flex flex-column align-items-center">
+              <%# AVATAR %>
+              <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered mt-3 mb-4">
+              <%# FULLNAME %>
+              <h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
+              <br>
+              <div class="text-left user-details">
+              <%# All Subscriptions %>
+                <span class="text-muted font-weight-light"> Current Subs </span>
+                <p> <strong><%= Subscription.all.count%> </strong> Active Subscriptions</p>
+                <%# <p> <%= pluralize subscriptions.count, 'subscription' %>
+              </div>
+              <%# SMS Number %>
+              <div class="text-left user-details">
+                <span class="text-muted font-weight-light"> Whatsapp Number </span>
+                <p> <%= current_user.whatsapp_number %> </p>
+              </div>
+              <%# Email %>
+              <div class="text-left user-details">
+                <span class="text-muted font-weight-light"> Email </span>
+                <p> <%= current_user.email %> </p>
+              </div>
+              <%# Next Spending %>
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark m-3" %>
+            </div>
+          </div>
+      </div>
 
+      <%# TABS %>
 
     <%# Subs Cards %>
-      <div class="search-column col-9">
-        <h1 class="d-flex justify-content-center mt-5">Your subscriptions</h1>
+      <div class="col-9">
+        <h1 class="d-flex justify-content-center mt-4">Your subscriptions</h1>
         <%= link_to "Add subscriptions", new_subscription_path, class: "btn btn-ghost m-3" %>
-        <div data-controller="search-subscriptions">>
+        <div data-controller="search-subscriptions">
               <%= form_with url: subscriptions_path, method: :get, html: { class: 'mb-4', data: { search_subscriptions_target: 'form' } } do |f| %>
                 <%= f.text_field :query,
                             class: "form-control",
@@ -35,7 +45,36 @@
                             value: params[:query],
                             data: { search_subscriptions_target: 'searchInput', action: 'keyup->search-subscriptions#update' } %>
               <% end %>
+
+          <%# TABS NAVIGATION %>
+          <ul class="nav nav-tabs tabs-underlined" id="myTab" role="tablist">
+            <li class="nav-item" role="list">
+              <a class="tab-underlined active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">Subscriptions</a>
+            </li>
+
+            <li class="nav-item" role="graph">
+              <a class="tab-underlined" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Graphs</a>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
               <%= render 'list', subscriptions: @subscriptions %>
+            </div>
+            <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
+              <div class="d-flex justify-content-around align-items-center mt-5">
+                <div>
+                  <h5>  Spending By Subscription</h5>
+                  <%= bar_chart Subscription.group(:title).sum(:price) %>
+                </div>
+                <div>
+                  <h5> Spending By Category</h5>
+                  <%= pie_chart Subscription.group(:category).count %>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>

@@ -3,6 +3,10 @@ class SubscriptionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
+    ActionMailbox::InboundEmail.all.where(status: 'pending').each do |inbound|
+      inbound.route
+    end
+
     @subscriptions = Subscription.all
     @subscriptions = current_user.subscriptions
 
@@ -17,6 +21,7 @@ class SubscriptionsController < ApplicationController
       format.html # Follow regular flow of Rails
       format.text { render partial: 'subscriptions/list', locals: { subscriptions: @subscripitons }, formats: [:html] }
     end
+
   end
 
   def new
@@ -32,7 +37,7 @@ class SubscriptionsController < ApplicationController
     @subscription.user = current_user
 
     if @subscription.save
-      redirect_to @subscription, notice: 'Subscription was successfully created.'
+      redirect_to subscriptions_path, notice: 'Subscription was successfully created.'
     else
       render :new
     end
@@ -72,6 +77,9 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:subscription).permit(:title, :username, :sub_type, :notify, :notify_before, :notes, :price, :start_date, :end_date, :category, :currency)
+    params.require(:subscription).permit(
+      :title, :username, :sub_type, :notify, :notify_before,
+      :notes, :price, :start_date, :end_date, :category, :currency
+    )
   end
 end
