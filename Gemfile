@@ -28,7 +28,9 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
-gem "cloudinary"
+gem 'cloudinary', '~> 1.16.0'
+gem "aws-sdk", "~> 3", require: false
+gem "aws-sdk-s3", "~> 1"
 
 #Chart gem
 gem "chartkick"

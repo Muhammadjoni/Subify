@@ -3,6 +3,7 @@ class Subscription < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   # validates :start_date,  presence: true
   # validates :notify_before,  presence: true
+  has_one_attached :photo
 
 
   CATEGORY = %W(Entertainment Education Finance Others)
