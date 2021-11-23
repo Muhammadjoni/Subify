@@ -75,5 +75,5 @@ user.subscriptions.create(
   price: 20,
   currency: 'AED',
   notify: true,
-  category: 'Utility-Bills'
+  category: 'Others'
 )
