@@ -8,7 +8,7 @@
         <br>
         <br>
         <br>
-        <% if Date.today - @subscription.start_date <= 14.days %>
+        <% if Date.today - @subscription.start_date <= @subscription.trial %>
                   <h4>It's a <%= "trial" %></h4>
                 <% else %>
                   <h4>It's a <%= "paid subscription" %></h4>
