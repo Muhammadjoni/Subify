@@ -12,7 +12,6 @@ class SubscriptionsMailbox < ApplicationMailbox
     }
 
     create_subscriptions(user, subscripiton_hash)
-
   end
 
   private
@@ -26,7 +25,7 @@ class SubscriptionsMailbox < ApplicationMailbox
   end
 
   def regex_data
-    @regex_data ||= mail.decoded.match(/(?<sub_type>(annual|monthly)).+(?<price>\d+.\d+).+(?<currency>(USD|EUR)).+(?<category>(Entertainment|Education|Finance))/)
+    @regex_data ||= mail.text_part.body.decoded.match(/(?<sub_type>(annual|monthly)).+(?<price>\d+.\d+).+(?<currency>(USD|EUR)).+(?<category>(Entertainment|Education|Finance))/m)
   end
 
 end
