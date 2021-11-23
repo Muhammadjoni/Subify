@@ -35,12 +35,12 @@
 
     <%# Subs Cards %>
       <div class="col-9">
-        <h1 class="d-flex justify-content-center mt-4">Your subscriptions</h1>
+        <h1 class="d-flex justify-content-center mb-4">Your subscriptions</h1>
         <%= link_to "Add subscriptions", new_subscription_path, class: "btn btn-ghost m-3" %>
         <div data-controller="search-subscriptions">
               <%= form_with url: subscriptions_path, method: :get, html: { class: 'mb-4', data: { search_subscriptions_target: 'form' } } do |f| %>
                 <%= f.text_field :query,
-                            class: "form-control",
+                            class: "form-control border border-secondary-xs",
                             placeholder: "Search your subscription",
                             value: params[:query],
                             data: { search_subscriptions_target: 'searchInput', action: 'keyup->search-subscriptions#update' } %>
