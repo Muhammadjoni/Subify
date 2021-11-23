@@ -3,40 +3,62 @@
     <%# PROFILE %>
       <div class="col-3 justify-content-start">
           <div class="card vh-100">
-            <div class="card-body d-flex flex-column align-items-center">
-              <%# AVATAR %>
-              <img src="https://pyxis.nymag.com/v1/imgs/da7/3f4/df4afe9cf95ad30101154ca391a0a24f94-12-christian-bale.2x.rsquare.w330.jpg" class="avatar-bordered mt-3 mb-4">
-              <%# FULLNAME %>
-              <h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
-              <br>
-              <div class="text-left user-details">
+            <div class="card-body d-flex flex-column mt-3">
+             <%# FULLNAME %>
+              <h3> Hello <%= current_user.first_name %> 👋🏽 </h3>
+              <h5>Your Dashboard</h5>
+              <div class="text-left user-details d-flex align-items-inherit mt-4 risk-subs">
+                <strong class="Sub-Text mr-2"> <%= @total_free_price %> </strong>
+                <div>
+                  <span class="text-muted font-weight-light">AED</span>
+                  <p> At risk to pay</p>
+                </div>
+              </div>
               <%# All Subscriptions %>
-                <span class="text-muted font-weight-light"> Current Subs </span>
-                <p> <strong><%= Subscription.all.count%> </strong> Active Subscriptions</p>
-                <%# <p> <%= pluralize subscriptions.count, 'subscription' %>
+              <div class="text-left user-details d-flex align-items-inherit mt-4 free-subs">
+                <strong class="Sub-Text mr-2"><%= @free_subscriptions.count %></strong>
+                <div>
+                  <span class="text-muted font-weight-light">FREE TRIAL</span>
+                  <p> Subs</p>
+                </div>
               </div>
-              <%# SMS Number %>
-              <div class="text-left user-details">
-                <span class="text-muted font-weight-light"> Whatsapp Number </span>
-                <p> <%= current_user.whatsapp_number %> </p>
+
+              <div class="text-left user-details d-flex align-items-inherit mt-4 active-subs">
+                <strong class="Sub-Text mr-2"><%= @subscriptions.count %></strong>
+                <div>
+                  <span class="text-muted font-weight-light">ACTIVE</span>
+                  <p> Subs</p>
+                </div>
               </div>
-              <%# Email %>
-              <div class="text-left user-details">
-                <span class="text-muted font-weight-light"> Email </span>
-                <p> <%= current_user.email %> </p>
+              <span> Due for next month <%= @total_price %> AED </span>
+
+
+
+              <div class="text-left user-details d-flex align-items-inherit mt-4 paid-subs">
+                <strong class="Sub-Text mr-2"><%= @on_subscriptions %></strong>
+                <div>
+                  <span class="text-muted font-weight-light">PAID Subs</span>
+                  <p> Subs</p>
+                </div>
               </div>
-              <%# Next Spending %>
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark m-3" %>
+                <span> You're actual expenses <%= @on_price %> AED </span>
+
+                 <div class="text-left user-details d-flex align-items-inherit p-3 mt-3 btn-subs">
+                <strong class="Sub-Text mr-2 pb-1">+</strong>
+                <div>
+                  <span> <%= link_to "Add subscription", new_subscription_path, class: "btn-subs" %> </span>
+                </div>
+              </div>
+
+
+
             </div>
           </div>
       </div>
 
-      <%# TABS %>
-
-    <%# Subs Cards %>
+      <%# Search Bar %>
       <div class="col-9">
-        <h1 class="d-flex justify-content-center mt-4">Your subscriptions</h1>
-        <%= link_to "Add subscriptions", new_subscription_path, class: "btn btn-ghost m-3" %>
+        <h1 class="d-flex justify-content-center mt-4">Your Subscriptions</h1>
         <div data-controller="search-subscriptions">
               <%= form_with url: subscriptions_path, method: :get, html: { class: 'mb-4', data: { search_subscriptions_target: 'form' } } do |f| %>
                 <%= f.text_field :query,
@@ -69,14 +91,12 @@
                 </div>
                 <div>
                   <h5> Spending By Category</h5>
-                  <%= pie_chart Subscription.group(:category).count %>
+                  <%= pie_chart Subscription.group(:category).sum(:price) %>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
   </div>
 </div>
