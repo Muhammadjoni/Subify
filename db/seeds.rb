@@ -25,7 +25,7 @@ user.subscriptions.create(
   sub_type: 'monthly',
   notify_before: 1,
   price: 30,
-  currency: 'USD',
+  currency: 'AED',
   notify: true,
   category: 'Entertainment'
 )
@@ -37,7 +37,7 @@ user.subscriptions.create(
   sub_type: 'annual',
   notify_before: 1,
   price: 20,
-  currency: 'USD',
+  currency: 'AED',
   notify: true,
   category: 'Entertainment'
 )
@@ -49,7 +49,7 @@ user.subscriptions.create(
   sub_type: 'annual',
   notify_before: 1,
   price: 15,
-  currency: 'EUR',
+  currency: 'AED',
   notify: true,
   category: 'Education'
 )
@@ -61,7 +61,7 @@ user.subscriptions.create(
   sub_type: 'annual',
   notify_before: 1,
   price: 15,
-  currency: 'GBP',
+  currency: 'AED',
   notify: true,
   category: 'Education'
 )
