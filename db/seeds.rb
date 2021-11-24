@@ -1,10 +1,6 @@
-puts "Cleaning up database..."
 
 User.destroy_all
 Subscription.destroy_all
-puts "Database cleaned"
-
-puts "Creating the Users"
 
 user = User.create(
   first_name: 'Muhammadjon',
@@ -15,16 +11,13 @@ user = User.create(
   whatsapp_number: '+971589199329'
 )
 
-puts "Done with the Users Creation"
-puts "Creating the subscriptions"
-
 user.subscriptions.create(
-  title: 'Netflix Standard',
+  title: 'Disney +',
   start_date: '2021-02-24',
   end_date: '2022-02-24',
   sub_type: 'monthly',
   notify_before: 1,
-  price: 30,
+  price: 65,
   currency: 'AED',
   notify: true,
   category: 'Entertainment'
@@ -34,7 +27,7 @@ user.subscriptions.create(
   title: 'Youtube Premium',
   start_date: '2020-08-03',
   end_date: '2022-08-02',
-  sub_type: 'annual',
+  sub_type: 'monthly',
   notify_before: 1,
   price: 73,
   currency: 'AED',
@@ -67,14 +60,14 @@ user.subscriptions.create(
 )
 
 user.subscriptions.create(
-  title: 'Pipedrive',
+  title: 'Codecademy',
   start_date: '2021-11-24',
   sub_type: 'monthly',
   notify_before: 1,
   price: 55,
   currency: 'AED',
   notify: true,
-  link: "zarin.pipedrive.com/settings/subscription/churn-shield?cancellation=true",
-  trial: 14,
-  category: 'Finance'
+  link: "https://www.codecademy.com/account",
+  trial: 7,
+  category: 'Education'
 )

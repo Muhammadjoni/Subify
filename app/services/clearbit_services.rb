@@ -1,5 +1,5 @@
 require 'clearbit'
-class Clearbit
+class ClearbitServices
 
   def initialize(domain, name)
     @domain = domain
