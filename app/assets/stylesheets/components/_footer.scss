@@ -1,25 +1,45 @@
 .footer {
   width: 100%;
   text-decoration: none;
-  background: #F4F4F4;
+  background: #757675;
+  line-height: 2.5;
   display: flex;
-  color: rgba(0,0,0,0.3);
-   font-size: 16px;
+  color: white;
+  font-size: 16px;
 }
 
 .footer-links {
-  color: #01374d;
-  opacity: 0.25;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 24px;
   padding: 0px 10px;
+    a {
+      color: #72b8d3 !important;
+    }
 }
 
 .footer-links :hover {
   opacity: 1;
 }
 
-.footer-info {
-  justify-content: space-between;
-  display: flex;
+
+.scroll-link {
+  color: #757675;
+}
+
+.scroll-link :hover {
+  color: #72b8d3 ;
+}
+
+
+.contacts
+  a, a:hover, a:focus {
+    color: #72b8d3 !important;
+}
+
+.col-5 {
+  text-align: left;
+}
+
+.link-position {
+  padding-bottom: 2rem;
 }
