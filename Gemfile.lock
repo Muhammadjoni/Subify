@@ -1252,6 +1252,8 @@ GEM
       xpath (~> 3.2)
     chartkick (4.1.2)
     childprocess (4.1.0)
+    clearbit (0.3.3)
+      nestful (~> 1.1.0)
     cloudinary (1.16.1)
       aws_cf_signer
       rest-client
@@ -1324,6 +1326,7 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     multipart-post (2.1.1)
+    nestful (1.1.4)
     netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.12.5-arm64-darwin)
@@ -1481,6 +1484,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chartkick
+  clearbit
   cloudinary (~> 1.16.0)
   devise
   dotenv-rails
