@@ -3,12 +3,13 @@
 
 
     <% @subscriptions.each do |category, plans| %>
-      <h3 class="categorytitle mb-5"><%= "#{category}" %></h3>
-
+    <h3 class="categorytitle mb-5"><%= "#{category}" %></h3>
+    <div class="info">
       <div class="subscriptions-list-wraper" id="subscriptions">
         <div class="row">
           <div class="col-md">
             <div class="d-flex flex-column-reverse flex-reversed">
+
               <%  plans.each do |free, subscriptions|  %>
 
                   <% if free %>
@@ -18,9 +19,9 @@
                         <% subscriptions.each do |subscription| %>
                           <% border = (subscription.notification_date - Date.today).to_i %>
 
-                          <%= link_to subscription_path(subscription) do %>
+                          <%# <%= link_to subscription_path(subscription) do %>
 
-                            <div class="subscription-card">
+                            <div class="subscription-card position-relative">
 
                               <%# LOGO %>
                               <div class="logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.designmantic.com/blog/wp-content/uploads/2016/07/Netflix-Revamps-Logo.jpg)"></div>
@@ -38,37 +39,71 @@
 
                               <%# EMPTY 2 %>
                               <div class="empty2">
-                                <% if border < 6 %>
-
-                                  <%# display the right image here %>
-                                  <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="warning">
-
-                                  <%# display the right image here %>
-
-                                <% end %>
-
                               </div>
 
                               <%# PRICE %>
-                              <div class="bottom-right" style="text-align-right">
-                                <div class="price d-flex justify-content-end">
-                                  <span class="currency mb-0">
-                                    <%= subscription.currency %>
-                                  </span>
+                              <div class="bottom-right d-flex justify-content-end align-items-center">
+                                <% if border < 6 %>
+                                  <%# display the right image here %>
+                                  <img class="card-img-top position-absolute" src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="warning">
+                                <% end %>
 
-                                  <span class="value mb-0 pl-1">
-                                    <%= subscription.price %>
+                                <div class='text-align-right'>
+                                  <div class="price d-flex justify-content-end">
+                                    <span class="currency mb-0">
+                                      <%= subscription.currency %>
+                                    </span>
+
+                                    <span class="value mb-0 pl-1">
+                                      <%= subscription.price %>
+                                    </span>
+                                  </div>
+
+                                  <span class="type mb-0">
+                                    <%= subscription.sub_type %>
                                   </span>
                                 </div>
 
-                                <span class="type mb-0">
-                                  <%= subscription.sub_type %>
-                                </span>
+                              </div>
+
+                              <%# HOVER BOX %>
+
+                              <div class="w-100 hover-box position-absolute px-2 p-4">
+                                <%# Days till renewal %>
+                                <div class="d-flex align-items-end">
+                                  <% days = (subscription.notification_date + 1 - Date.today).to_i %>
+
+                                  <% if days.zero? %>
+                                    <span>TODAY</span>
+                                  <% else %>
+                                    <div class="position-relative" style="font-size: 3rem">
+                                      <%= days %>
+                                      <div class="legend">
+                                        <p class="mb-0">Days</p>
+                                        <p class="mb-0">till renewal</p>
+                                      </div>
+                                    </div>
+                                  <% end %>
+
+                                </div>
+
+                                <%# buttons holder %>
+                                <div class="d-flex justify-content-around align-items-end">
+                                  <%= link_to subscription_path(subscription),
+                                      method: :delete,
+                                      data: { confirm: 'Are you sure ?'} do %>
+                                    <i class="fas fa-minus-square text-white"></i>
+                                  <% end %>
+
+                                  <%= link_to edit_subscription_path(subscription) do %>
+                                    <i class="fas fa-pen-square text-white"></i>
+                                  <% end %>
+                                </div>
                               </div>
 
                             </div>
 
-                          <% end %>
+                          <%# <% end %>
                         <% end %>
                       </div>
                   <% else %>
@@ -78,9 +113,9 @@
                         <% subscriptions.each do |subscription| %>
                           <% border = (subscription.notification_date - Date.today).to_i %>
 
-                          <%= link_to subscription_path(subscription) do %>
 
-                            <div class="subscription-card">
+
+                            <div class="subscription-card position-relative">
 
                               <%# LOGO %>
                               <div class="logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.designmantic.com/blog/wp-content/uploads/2016/07/Netflix-Revamps-Logo.jpg)"></div>
@@ -97,38 +132,69 @@
                               </div>
 
                               <%# EMPTY 2 %>
-                              <div class="empty2">
-                                <% if border < 6 %>
-
-                                  <%# display the right image here %>
-                                  <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="warning">
-
-                                  <%# display the right image here %>
-
-                                <% end %>
-
-                              </div>
+                              <div class="empty2"></div>
 
                               <%# PRICE %>
-                              <div class="bottom-right" style="text-align-right">
-                                <div class="price d-flex justify-content-end">
-                                  <span class="currency mb-0">
-                                    <%= subscription.currency %>
-                                  </span>
+                              <div class=" bottom-right d-flex justify-content-end align-items-center">
+                                <% if border < 6 %>
+                                  <%# display the right image here %>
+                                  <img class="card-img-top position-absolute" src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="warning">
+                                <% end %>
 
-                                  <span class="value mb-0 pl-1">
-                                    <%= subscription.price %>
+                                <div class='text-align-right'>
+                                  <div class="price d-flex justify-content-end">
+                                    <span class="currency mb-0">
+                                      <%= subscription.currency %>
+                                    </span>
+
+                                    <span class="value mb-0 pl-1">
+                                      <%= subscription.price %>
+                                    </span>
+                                  </div>
+
+                                  <span class="type mb-0">
+                                    <%= subscription.sub_type %>
                                   </span>
                                 </div>
 
-                                <span class="type mb-0">
-                                  <%= subscription.sub_type %>
-                                </span>
+                              </div>
 
+                              <%# HOVER BOX %>
+
+                              <div class="w-100 hover-box position-absolute px-2 p-4">
+                                <%# Days till renewal %>
+                                <div class="d-flex align-items-end">
+                                  <% days = (subscription.notification_date + 1 - Date.today).to_i %>
+
+                                  <% if days.zero? %>
+                                    <span>TODAY</span>
+                                  <% else %>
+                                    <div class="position-relative" style="font-size: 3rem">
+                                      <%= days %>
+                                      <div class="legend">
+                                        <p class="mb-0">Days</p>
+                                        <p class="mb-0">till renewal</p>
+                                      </div>
+                                    </div>
+                                  <% end %>
+
+                                </div>
+
+                                <%# buttons holder %>
+                                <div class="d-flex justify-content-around align-items-end">
+                                  <%= link_to subscription_path(subscription),
+                                      method: :delete,
+                                      data: { confirm: 'Are you sure ?'} do %>
+                                    <i class="fas fa-minus-square text-white"></i>
+                                  <% end %>
+
+                                  <%= link_to edit_subscription_path(subscription) do %>
+                                    <i class="fas fa-pen-square text-white"></i>
+                                  <% end %>
+                                </div>
                               </div>
                             </div>
 
-                          <% end %>
                         <% end %>
                       </div>
                   <% end %>
@@ -139,6 +205,8 @@
           </div>
         </div>
       </div>
+
+    </div>
     <% end %>
   </div>
 
