@@ -7,9 +7,17 @@ class SubscriptionsController < ApplicationController
     ActionMailbox::InboundEmail.all.where(status: 'pending').each do |inbound|
       inbound.route
     end
-
-    @subscriptions = Subscription.all
+    # Free & Paid Subs
     @subscriptions = current_user.subscriptions
+    @free_subscriptions = @subscriptions.where(' ? - start_date <= trial', Date.today)
+    @on_subscriptions = @subscriptions.count - @free_subscriptions.count
+
+    # How to compute to total price of All subscriptions ?
+    @total_price = @subscriptions.map(&:price).sum
+
+    # How to compute to total price of Free subscriptions ?
+    @total_free_price = @free_subscriptions.map(&:price).sum
+    @on_price = @total_price - @total_free_price
 
     grouped_subscriptions = @subscriptions.group_by(&:category)
 
@@ -30,7 +38,6 @@ class SubscriptionsController < ApplicationController
       format.html # Follow regular flow of Rails
       format.text { render partial: 'subscriptions/list', locals: { subscriptions: @subscripitons }, formats: [:html] }
     end
-
   end
 
   def new
