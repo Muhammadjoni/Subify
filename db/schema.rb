@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2021_11_24_094714) do
     t.integer "price"
     t.text "notes"
     t.text "link"
-    t.boolean "notify"
-    t.integer "notify_before"
+    t.boolean "notify", default: true
+    t.integer "notify_before", default: 1
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

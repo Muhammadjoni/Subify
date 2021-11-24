@@ -71,7 +71,7 @@
 
                               <%# HOVER BOX %>
 
-                              <div class="w-100 hover-box position-absolute px-2 p-4">
+                              <div class="w-100 hover-box position-absolute px-2 p-4 align-items-baseline">
                                 <%# Days till renewal %>
                                 <div class="d-flex align-items-end">
                                   <% days = (subscription.notification_date + 1 - Date.today).to_i %>
@@ -79,7 +79,7 @@
                                   <% if days.zero? %>
                                     <span>TODAY</span>
                                   <% else %>
-                                    <div class="position-relative" style="font-size: 3rem">
+                                    <div class="position-relative" style="font-size: 3rem; font-weight: 700">
                                       <%= days %>
                                       <div class="legend">
                                         <p class="mb-0">Days</p>
@@ -163,7 +163,7 @@
 
                               <%# HOVER BOX %>
 
-                              <div class="w-100 hover-box position-absolute px-2 p-4">
+                              <div class="w-100 hover-box position-absolute px-2 p-4 align-items-baseline">
                                 <%# Days till renewal %>
                                 <div class="d-flex align-items-end">
                                   <% days = (subscription.notification_date + 1 - Date.today).to_i %>
@@ -171,7 +171,7 @@
                                   <% if days.zero? %>
                                     <span>TODAY</span>
                                   <% else %>
-                                    <div class="position-relative" style="font-size: 3rem">
+                                    <div class="position-relative" style="font-size: 3rem; font-weight: 700">
                                       <%= days %>
                                       <div class="legend">
                                         <p class="mb-0">Days</p>
