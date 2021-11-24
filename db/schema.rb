@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_145215) do
+ActiveRecord::Schema.define(version: 2021_11_24_094714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_11_22_145215) do
     t.string "currency"
     t.date "notification_date"
     t.integer "trial", default: 7
+    t.string "image_url"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
