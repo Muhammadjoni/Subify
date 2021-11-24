@@ -33,7 +33,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Action Mailbox to accept emails from an SMTP
-  config.hosts << 'de85-94-203-136-146.ngrok.io'
+  config.hosts << 'a179-94-203-136-146.ngrok.io'
   config.action_mailbox.ingress = :postmark
 
   # Don't care if the mailer can't send.
