@@ -37,7 +37,7 @@ class SubscriptionsMailbox < ApplicationMailbox
   end
 
   def regex_data
-    @regex_data ||= mail.text_part.body.decoded.match(/(?<sub_type>(annual|monthly)).+(?<price>\d+.\d+).+(?<currency>(USD|EUR)).+(?<category>(Entertainment|Education|Finance))/m)
+    @regex_data ||= mail.text_part.body.decoded.match(/(?<sub_type>(annual|monthly)).+(?<price>\d+.\d+).+(?<currency>(USD|EUR|AED)).+(?<category>(Entertainment|Education|Finance))/m)
   end
 
 end
