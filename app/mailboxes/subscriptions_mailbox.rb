@@ -2,7 +2,6 @@ class SubscriptionsMailbox < ApplicationMailbox
 
   def process
 
-
     identifiers = {
       'Netflix' => ['netflix.com', 'netflix.com/YourAccount'],
       'Pipedrive' => ['pipedrive.com', 'zarin.pipedrive.com/settings/subscription/churn-shield?cancellation=true'],
@@ -10,7 +9,7 @@ class SubscriptionsMailbox < ApplicationMailbox
 
     image_url = ClearbitServices.new(identifiers[mail.subject].first, mail.subject).call
 
-    subscripiton_hash = {
+    subscription_hash = {
       title: mail.subject,
       start_date: Date.today,
       sub_type: regex_data[:sub_type],
@@ -22,14 +21,14 @@ class SubscriptionsMailbox < ApplicationMailbox
       notify_before: 1
     }
 
-    create_subscriptions(user, subscripiton_hash)
+    create_subscriptions(user, subscription_hash)
 
   end
 
   private
 
-  def create_subscriptions(user, subscripiton_hash)
-    new_subscription = user.subscriptions.create!(subscripiton_hash)
+  def create_subscriptions(user, subscription_hash)
+    new_subscription = user.subscriptions.create!(subscription_hash)
   end
 
   def user
