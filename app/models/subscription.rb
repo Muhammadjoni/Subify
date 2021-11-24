@@ -37,6 +37,8 @@ class Subscription < ApplicationRecord
     end
   end
 
+
+
   include PgSearch::Model
   pg_search_scope :search,
     against: [ :title, :category ],

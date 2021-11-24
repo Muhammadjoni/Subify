@@ -24,7 +24,7 @@
                             <div class="subscription-card position-relative">
 
                               <%# LOGO %>
-                              <div class="logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.designmantic.com/blog/wp-content/uploads/2016/07/Netflix-Revamps-Logo.jpg)"></div>
+                              <div class="logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= subscription.image_url %>)"></div>
 
                               <div class="titlesection">
                               <%# CATEGORY %>
@@ -45,8 +45,11 @@
                               <div class="bottom-right d-flex justify-content-end align-items-center">
                                 <% if border < 6 %>
                                   <%# display the right image here %>
+
+
                                   <img class="card-img-top position-absolute" src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="warning">
                                 <% end %>
+       
 
                                 <div class='text-align-right'>
                                   <div class="price d-flex justify-content-end">
@@ -118,8 +121,7 @@
                             <div class="subscription-card position-relative">
 
                               <%# LOGO %>
-                              <div class="logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.designmantic.com/blog/wp-content/uploads/2016/07/Netflix-Revamps-Logo.jpg)"></div>
-
+                              <div class="logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= subscription.image_url %>)"></div>
                               <div class="titlesection">
                               <%# CATEGORY %>
                                 <div class="text-muted">
