@@ -2,7 +2,7 @@ Rails.application.configure do
   # Prepare the ingress controller used to receive mail
   # config.action_mailbox.ingress = :relay
 
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.default_url_options = { host: "http://subify.sbs" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -95,7 +95,7 @@ Rails.application.configure do
 
 
   # Action Mailbox to accept emails from an SMTP
-  config.action_mailbox.ingress = :relay
+  config.action_mailbox.ingress = :postmark
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector

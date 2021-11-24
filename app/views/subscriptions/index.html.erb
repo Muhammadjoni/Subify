@@ -62,7 +62,7 @@
         <div data-controller="search-subscriptions">
               <%= form_with url: subscriptions_path, method: :get, html: { class: 'mb-4', data: { search_subscriptions_target: 'form' } } do |f| %>
                 <%= f.text_field :query,
-                            class: "form-control",
+                            class: "form-control border border-secondary-xs",
                             placeholder: "Search your subscription",
                             value: params[:query],
                             data: { search_subscriptions_target: 'searchInput', action: 'keyup->search-subscriptions#update' } %>

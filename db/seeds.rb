@@ -7,9 +7,9 @@ puts "Database cleaned"
 puts "Creating the Users"
 
 user = User.create(
-  first_name: 'Bruce',
-  last_name: 'Wayne',
-  email: 'bruce.wayne@gotham.com',
+  first_name: 'Muhammadjon',
+  last_name: 'Rahimzod',
+  email: 'mrahimzod@gmail.com',
   password: 'batman',
   sms_number: '+971589199329',
   whatsapp_number: '+971589199329'
@@ -25,7 +25,7 @@ user.subscriptions.create(
   sub_type: 'monthly',
   notify_before: 1,
   price: 30,
-  currency: 'USD',
+  currency: 'AED',
   notify: true,
   category: 'Entertainment'
 )
@@ -37,7 +37,7 @@ user.subscriptions.create(
   sub_type: 'annual',
   notify_before: 1,
   price: 20,
-  currency: 'USD',
+  currency: 'AED',
   notify: true,
   category: 'Entertainment'
 )
@@ -49,7 +49,7 @@ user.subscriptions.create(
   sub_type: 'annual',
   notify_before: 1,
   price: 15,
-  currency: 'EUR',
+  currency: 'AED',
   notify: true,
   category: 'Education'
 )
@@ -61,7 +61,7 @@ user.subscriptions.create(
   sub_type: 'annual',
   notify_before: 1,
   price: 15,
-  currency: 'GBP',
+  currency: 'AED',
   notify: true,
   category: 'Education'
 )
@@ -75,5 +75,5 @@ user.subscriptions.create(
   price: 20,
   currency: 'AED',
   notify: true,
-  category: 'Utility-Bills'
+  category: 'Others'
 )
