@@ -7,9 +7,10 @@ body {
     font-family: 'PT Sans', sans-serif;
     font-size: 16px;
     font-weight: 300;
-    color: #888;
+    color: #3F3F3F;
     line-height: 30px;
     text-align: center;
+    background-color: white;
 }
 
 strong { font-weight: 600; }
@@ -29,6 +30,10 @@ h1, h2 {
     font-family: 'PT Sans', sans-serif;
 }
 
+.services-container {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
 
 .services-box {
     padding-top: 40px;
@@ -45,7 +50,7 @@ h1, h2 {
     line-height: 80px;
     text-align: center;
     border-radius: 28px;
-    background: #72b8d3;
+    background: #31587A;
 }
 
 .services-box h3 {
@@ -54,6 +59,11 @@ h1, h2 {
     padding: 0 0 10px 0;
 }
 
+.how-it-works-container {
+    background-color: #dbdedd;
+    padding-top: 5rem;
+    padding-bottom: 13rem;
+}
 
 .how-it-works-box {
     margin-top: 120px;
@@ -89,6 +99,7 @@ h1, h2 {
 
 .testimonials-container {
     padding-bottom: 70px;
+    padding-top: 70px;
     margin-top: 70px;
     margin-bottom: 70px;
 }
@@ -147,8 +158,8 @@ h1, h2 {
 }
 
 .contact-us-container {
-  padding-bottom: 70px;
-  margin-top: 50px;
-  margin-bottom: 70px;
-  text-align: left;
+    padding-bottom: 70px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+    text-align: left;
 }

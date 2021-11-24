@@ -8,12 +8,6 @@
         <br>
         <br>
         <br>
-        <% if Date.today - @subscription.start_date <= 14.days %>
-                  <h4>It's a <%= "trial" %></h4>
-                <% else %>
-                  <h4>It's a <%= "paid subscription" %></h4>
-                <% end %>
-        <h4>Total amount spent: </h4>
       </div>
     </div>
   </div>
@@ -85,13 +79,13 @@
         </tbody>
       </table>
       <div class="edit-buttons">
-        <%= link_to 'Back', subscriptions_path, class: 'btn btn-secondary' %>
+        <%= link_to 'Back', subscriptions_path, class: 'btn btn-back' %>
 
-        <%= link_to 'Edit', edit_subscription_path(@subscription), class: 'btn btn-info' %>
+        <%= link_to 'Edit', edit_subscription_path(@subscription), class: 'btn btn-edit' %>
 
         <%= link_to subscription_path(@subscription),
                     method: :delete,
-                    class: 'btn btn-danger btn-xs',
+                    class: 'btn btn-delete',
                     data: { confirm: 'Are you sure ?'} do %>
                     <i class="fas fa-trash-alt"></i>
         <% end %>

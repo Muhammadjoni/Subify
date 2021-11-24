@@ -28,8 +28,8 @@
 
         <div class="d-flex justify-content-around align-items-end">
           <%= f.input :notify, as: :boolean, checked_value: true, unchecked_value: false %>
-          <%= f.button :submit, 'Submit', class: 'm-3 btn btn-info' %>
-          <%= link_to 'Back', subscriptions_path, class: 'm-3 btn btn-secondary' %>
+          <%= f.button :submit, 'Submit', class: 'btn btn-edit' %>
+          <%= link_to 'Back', subscriptions_path, class: 'btn btn-back' %>
         </div>
     <% end %>
   </div>
