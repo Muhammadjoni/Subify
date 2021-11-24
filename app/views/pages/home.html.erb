@@ -1,17 +1,17 @@
 
 <%# banner %>
-<div class="banner d-flex justify-content-center align-items-center h-100" style="background-image: url('https://images.pexels.com/photos/5146492/pexels-photo-5146492.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); height: 50vh;">
-      <div class="text-center container">
-        <div class="row">
-        <div class="col-md-8 offset-md-2 text">
-        <h1>SUBIFY</h1><br>
-        <p>The fastest & easiest way to manage your subscriptions</p>
-        <a class="btn btn-ghost"<%= link_to "Add subscriptions", new_subscription_path %> </a>
-        </div>
-        </div>
+<div class="banner d-flex justify-content-center align-items-center h-100" style= "background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1508873699372-7aeab60b44ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTV8fGJ1c2luZXNzJTIwbWVldGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60'); height: 100vh;">
+  <div class="text-center container">
+    <div class="row">
+      <div class="col-md-5 text-left">
+        <h1>Enjoy trial subscriptions again</h1><br>
+        <p class='opacity-80'>Get back the control over your subscriptions. <br>
+        Your e-assistant will remind you about the reoccuring payments.</p>
+
+        <%= link_to "Manage Your Subscriptions", subscriptions_path, class: "btn btn-ghost mt-4" %>
       </div>
     </div>
-    </div>
+  </div>
 </div>
 <br>
 <%# services %>
@@ -19,7 +19,7 @@
   <div class="container">
     <div class="row">
       <div class="col services section-description">
-        <h2>Our Services</h2>
+        <h2>Your Benefits</h2>
         <div class="divider-1"><span></span></div>
       </div>
   </div>
@@ -32,8 +32,10 @@
         </div>
       </div>
       <div class="col-md-8">
-        <h3>Entertainment</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+        <h3>Smart</h3>
+        <p>
+        It is the end of long forms to create subscriptions. <br>  Now our intelligent assistant understands info from your mailboxs and instantly generates a subscription from it. Just send him an email like you do with any other assistant. Take back the control of your subscriptions budget and make your spendings more transparent. Reduce the risk of overspendindg and make your subscriptions's expences very transparent.
+        </p>
       </div>
     </div>
     </div>
@@ -45,8 +47,10 @@
           </div>
         </div>
         <div class="col-md-8">
-          <h3>Education</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+          <h3>Aggregated</h3>
+          <p>
+          The time of notes to remember all your subscriptions is over. Have all your free trials and ongoing subscriptions aggregated on a single and easy to read dashboard. <br> From now on stop loosing money on forgettable free trial susbscriptions.
+          </p>
         </div>
       </div>
     </div>
@@ -58,14 +62,18 @@
           </div>
         </div>
         <div class="col-md-8">
-          <h3>Finances & Utilities </h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
+          <h3>Fast </h3>
+          <p>
+          Never forget about the deadlines. We send you a whatsapp message with the link that takes you to the unsubscsribe page of each subscription at a glance. <br> Easy to remember, easy to perform.
+          </p>
         </div>
       </div>
     </div>
     </div>
   </div>
 </div>
+<br>
+<br>
 
 <%# how it works %>
 <div class="how-it-works-container section-container section-container-gray-bg" id="howitworks">
@@ -73,20 +81,14 @@
     <div class="row">
       <div class="col-12 col-lg-7 how-it-works-box">
         <div class="how-it-works-box-text">
-          <h3>How it works</h3>
+          <h2>How it works:</h2>
           <p class="medium-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-            Ut wisi enim ad minim veniam, quis nostrud.
-            Exerci tation ullamcorper suscipit <a href="#">lobortis nisl</a> ut aliquip ex ea commodo consequat.
-            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
-            Ut wisi enim ad minim veniam, quis nostrud.
+            <ol>
+              <li>Send us an email
+              <li>Receive a notification on whatsapp to manage your subscriptions and never forget about it anymore</li>
+              See the details of your spendings and risks of your budget on a simple dashboard with graphs.</li>
+              <li>Stop loosing money</li>
+              </ol>
           </p>
         </div>
       </div>

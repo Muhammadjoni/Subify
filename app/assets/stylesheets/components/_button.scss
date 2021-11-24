@@ -2,9 +2,9 @@
 .btn-ghost {
   color: white;
   padding: 9px 27px;
-  border-radius: 50px;
+  border-radius: 20px;
   font-weight: bolder;
-  background-color: #e63946;
+  background-color: #E63946;
   transition: opacity 0.3s ease;
 }
 
@@ -12,46 +12,61 @@
   opacity: 0.8;
 }
 
-.btn-gradient {
-  color: white;
-  padding: 6px 10px;
+.btn-edit {
+  color: #787373;
+  padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(#365B6A, #30515e);
+  background: #A8DADC;
   transition: background 0.3s ease;
 }
 
-.btn-gradient:hover {
-  background: linear-gradient(#72b8d3, #3a7a94);
-  color: white;
+.btn-edit:hover {
+  color: black;
 }
 
-.btn-dark {
-  background: linear-gradient(#101c20, #131a1d);
+.btn-back {
   color: white;
-  padding: 8px 10px;
+  padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
+  background:  #1D3557;
   transition: background 0.3s ease;
-  border: 1px solid #294652;
 }
 
-.btn-dark:hover {
-  background: radial-gradient(#b62f2f, #d83b3b);
-
+.btn-back:hover {
+  color: #787373;
 }
 
 .btn-delete {
-  background: linear-gradient(#da2c2c, #eb1212);
   color: white;
-  padding: 8px 10px;
+  padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
+  background: #E63946;
   transition: background 0.3s ease;
-  border: 1px solid #294652;
+}
+
+.edit-buttons {
+  opacity: 1.5;
 }
 
 .btn-delete:hover {
-  background: radial-gradient(#e09595, #cf5454);
-  color: white;
+  color: #787373;
 }
+
+// .btn-dark {
+//   // background: linear-gradient(#101c20, #131a1d);
+//   background:  #A8DADC;
+//   color: white;
+//   padding: 8px 10px;
+//   border-radius: 4px;
+//   font-weight: bold;
+//   transition: background 0.3s ease;
+//   border: 1px solid #294652;
+// }
+
+// .btn-dark:hover {
+//   background: radial-gradient(#b62f2f, #d83b3b);
+
+// }
