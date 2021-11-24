@@ -1,9 +1,9 @@
 <div class="container">
-  <div>
+  <div class="new-subscription">
     <%= simple_form_for(subscription) do |f| %>
-        <div class=" naming mx-2">
-          <%= f.input :username, label: false, placeholder: "Username"%>
-          <%= f.input :title, label: false, placeholder: "Title" %>
+        <div class=" mx-2 fields">
+          <%= f.input :username, label: false, placeholder: "Username:"%>
+          <%= f.input :title, label: false, placeholder: "Title:" %>
         </div>
 
         <div class="d-flex justify-content-around align-items-baseline fields bg-white">

@@ -1,47 +1,42 @@
-<div class="container mt-5">
-  <div class="row">
+<div class="dashboard position-sticky">
+  <div class="justify-content-start">
     <%# PROFILE %>
-      <div class="col-3 justify-content-start">
           <div class="card vh-100">
-            <div class="card-body d-flex flex-column mt-3">
+            <div class="card-body d-flex flex-column">
              <%# FULLNAME %>
-              <h3> Hello <%= current_user.first_name %> 👋🏽 </h3>
-              <h5>Your Dashboard</h5>
+              <h3 class="profile-card"> Hello <%= current_user.first_name %> 👋🏽 </h3>
+              <h5 class="profile-card">Welcome Back !!</h5>
               <div class="text-left user-details d-flex align-items-inherit mt-4 risk-subs">
-                <strong class="Sub-Text mr-2"> <%= @total_free_price %> </strong>
+                <strong class="Sub-Text mr-2"> 💸 </strong>
                 <div>
-                  <span class="text-muted font-weight-light">AED</span>
-                  <p> At risk to pay</p>
+                  <span class="text-muted font-weight-light"> <%= @total_free_price %> AED </span>
+                  <p> At Risk to pay </p>
                 </div>
               </div>
               <%# All Subscriptions %>
               <div class="text-left user-details d-flex align-items-inherit mt-4 free-subs">
                 <strong class="Sub-Text mr-2"><%= @free_subscriptions.count %></strong>
                 <div>
-                  <span class="text-muted font-weight-light">FREE TRIAL</span>
-                  <p> Subs</p>
+                  <span class="text-muted font-weight-light">FREE TRIAL Subs</span>
+                  <p> Keep an Eye on them</p>
                 </div>
               </div>
 
               <div class="text-left user-details d-flex align-items-inherit mt-4 active-subs">
                 <strong class="Sub-Text mr-2"><%= @subscriptions.count %></strong>
                 <div>
-                  <span class="text-muted font-weight-light">ACTIVE</span>
-                  <p> Subs</p>
+                  <span class="text-muted font-weight-light">ACTIVE Subs</span>
+                  <p> Due for next month <%= @total_price %> AED </p>
                 </div>
               </div>
-              <span> Due for next month <%= @total_price %> AED </span>
-
-
 
               <div class="text-left user-details d-flex align-items-inherit mt-4 paid-subs">
                 <strong class="Sub-Text mr-2"><%= @on_subscriptions %></strong>
                 <div>
                   <span class="text-muted font-weight-light">PAID Subs</span>
-                  <p> Subs</p>
+                  <p>You're actual expenses <%= @on_price %> AED </p>
                 </div>
               </div>
-                <span> You're actual expenses <%= @on_price %> AED </span>
 
                  <div class="text-left user-details d-flex align-items-inherit p-3 mt-3 btn-subs">
                 <strong class="Sub-Text mr-2 pb-1">+</strong>
@@ -54,49 +49,54 @@
 
             </div>
           </div>
-      </div>
-
+  </div>
+  <div class="container vh-100 overflow-scroll">
+      <div class="row">
       <%# Search Bar %>
-      <div class="col-9">
-        <h1 class="d-flex justify-content-center mt-4">Your Subscriptions</h1>
-        <div data-controller="search-subscriptions">
-              <%= form_with url: subscriptions_path, method: :get, html: { class: 'mb-4', data: { search_subscriptions_target: 'form' } } do |f| %>
-                <%= f.text_field :query,
-                            class: "form-control border border-secondary-xs",
-                            placeholder: "Search your subscription",
-                            value: params[:query],
-                            data: { search_subscriptions_target: 'searchInput', action: 'keyup->search-subscriptions#update' } %>
-              <% end %>
+          <div class="col-12 mt-4">
 
-          <%# TABS NAVIGATION %>
-          <ul class="nav nav-tabs tabs-underlined" id="myTab" role="tablist">
-            <li class="nav-item" role="list">
-              <a class="tab-underlined active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">Subscriptions</a>
-            </li>
+            <div class="col-3 mt-4 mb-3 "><strong><h3>DASHBOARD</h3></strong></div>
+            <div data-controller="search-subscriptions">
+              <div class="search-form mb-4">
+                    <%= form_with url: subscriptions_path, method: :get, html: { data: { search_subscriptions_target: 'form' } } do |f| %>
+                      <%= f.text_field :query,
+                                  class: "form-control border border-secondary-xs",
+                                  placeholder: "Search your subscription 🔍",
+                                  value: params[:query],
+                                  data: { search_subscriptions_target: 'searchInput', action: 'keyup->search-subscriptions#update' } %>
+                    <% end %>
+              </div>
 
-            <li class="nav-item" role="graph">
-              <a class="tab-underlined" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Graphs</a>
-            </li>
-          </ul>
+              <%# TABS NAVIGATION %>
+              <ul class="nav nav-tabs tabs-underlined" id="myTab" role="tablist">
+                <li class="nav-item" role="list">
+                  <a class="tab-underlined active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">Subscriptions</a>
+                </li>
 
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
-              <%= render 'list', subscriptions: @subscriptions %>
-            </div>
-            <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
-              <div class="d-flex justify-content-around align-items-center mt-5">
-                <div>
-                  <h5>  Spending By Subscription</h5>
-                  <%= bar_chart Subscription.group(:title).sum(:price) %>
+                <li class="nav-item" role="graph">
+                  <a class="tab-underlined" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Graphs</a>
+                </li>
+              </ul>
+
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
+                  <%= render 'list', subscriptions: @subscriptions %>
                 </div>
-                <div>
-                  <h5> Spending By Category</h5>
-                  <%= pie_chart Subscription.group(:category).sum(:price) %>
+                <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
+                  <div class="d-flex justify-content-around align-items-center mt-5">
+                    <div>
+                      <h5>  Spending By Subscription</h5>
+                      <%= bar_chart Subscription.group(:title).sum(:price) %>
+                    </div>
+                    <div>
+                      <h5> Spending By Category</h5>
+                      <%= pie_chart Subscription.group(:category).sum(:price) %>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
   </div>
 </div>
