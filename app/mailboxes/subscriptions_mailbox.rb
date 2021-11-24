@@ -1,6 +1,12 @@
 class SubscriptionsMailbox < ApplicationMailbox
 
   def process
+
+    URLS = {
+      netflix: ['netflix.com', 'netflix.com/YourAccount'],
+      pipedrive: ['pipedrive.com', 'delete_url'],
+    }
+
     subscripiton_hash = {
       title: mail.subject,
       start_date: Date.today,

@@ -43,6 +43,9 @@ gem 'simple_form'
 #Twillio - Notifications gem
 gem 'twilio-ruby'
 
+# Clearbit gem for logos
+gem 'clearbit'
+
 #Search form (pg-search)
 gem 'pg_search'
 
