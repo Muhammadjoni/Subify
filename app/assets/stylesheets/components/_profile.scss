@@ -14,3 +14,63 @@
   background-color: white;
   box-shadow: 1px 1px 1px lightgrey;
 }
+.Sub-Text{
+  margin-left: 10px;
+  font-size: 70px;
+}
+.btn-subs {
+ font-size: 16px;
+ background-color: #77abbd;
+ color: white !important;
+ align-items: center;
+ border-radius: 28px;
+}
+
+.card {
+  margin-left: -20px;
+  font-size:  0.92rem;
+  margin-top: 15px;
+  border-radius: 4px;
+  color: #3F3F3F;
+  box-shadow:  0 1px 1px rgba(0,0,0,0.2);
+}
+
+.card .user-details {
+  width: 90%;
+  span {
+    font-size: 0.9rem;
+  }
+  p {
+    margin-top: -.5rem;
+    margin-bottom: 1rem;
+  }
+}
+.card-body {
+  background-color: #FCFAFA;
+}
+.risk-subs {
+  background-color: #e8525b;
+  border-radius: 28px;
+  border: 1px solid whitesmoke;
+  .Sub-Text {
+    margin-top: 10px;
+    font-size: 40px;
+    color: white;
+    text-shadow: 0 1px 1px grey;
+  }
+}
+.active-subs {
+  background-color:#a8dadc47;
+  border-radius: 28px;
+  border: 1px solid whitesmoke;
+}
+.free-subs {
+  background-color: #a8dadc;
+  border-radius: 28px;
+  border: 1px solid whitesmoke;
+}
+.paid-subs {
+  background-color: #f1faeee0;
+  border-radius: 28px;
+  border: 1px solid whitesmoke;
+}

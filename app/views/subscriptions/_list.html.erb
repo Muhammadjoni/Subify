@@ -1,72 +1,141 @@
 <div data-search-subscriptions-target="list">
   <div class="category-box">
-    <% grouped_subscriptions = @subscriptions.group_by { |subscription| subscription.category } %>
-    <% grouped_subscriptions.each_pair do |key, subscriptions| %>
-      <h3 class="m-2"><%= "#{key}" %></h3>
+
+
+    <% @subscriptions.each do |category, plans| %>
+      <h3 class="categorytitle mb-5"><%= "#{category}" %></h3>
 
       <div class="subscriptions-list-wraper" id="subscriptions">
         <div class="row">
           <div class="col-md">
-            <div class="h3">
-              <% if params[:query].blank? %>
-                <%= pluralize subscriptions.count, 'subscription' %> available
-              <% else %>
-                <%= pluralize subscriptions.count, 'result' %> for <code><%= params[:query] %></code>
-              <% end %>
-            </div>
-            <div class="cards">
+            <div class="d-flex flex-column-reverse flex-reversed">
+              <%  plans.each do |free, subscriptions|  %>
 
-              <%  subscriptions.each do |subscription|  %>
+                  <% if free %>
+                      <div class="cards bg p-4 px-4 mt-5 mb-5 position-relative" style="background: #f8f9fa;border-left: 9px solid #e96a70;">
 
-                  <% border = (subscription.notification_date - Date.today).to_i %>
-                  <% if border < 5 %>
-                    <% color = "danger" %>
-                  <% elsif border > 5 && border < 14 %>
-                    <% color = "warning" %>
+                        <%# FREE SUBCRIPTIONS %>
+                        <% subscriptions.each do |subscription| %>
+                          <% border = (subscription.notification_date - Date.today).to_i %>
+
+                          <%= link_to subscription_path(subscription) do %>
+
+                            <div class="subscription-card">
+
+                              <%# LOGO %>
+                              <div class="logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.designmantic.com/blog/wp-content/uploads/2016/07/Netflix-Revamps-Logo.jpg)"></div>
+
+                              <div class="titlesection">
+                              <%# CATEGORY %>
+                                <div class="text-muted">
+                                  <span class="badge badge-light p-1"><%= subscription.category %></span>
+                                </div>
+                                <%# TITLE %>
+                                <div class="title">
+                                  <%= subscription.title %>
+                                </div>
+                              </div>
+
+                              <%# EMPTY 2 %>
+                              <div class="empty2">
+                                <% if border < 6 %>
+
+                                  <%# display the right image here %>
+                                  <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="warning">
+
+                                  <%# display the right image here %>
+
+                                <% end %>
+
+                              </div>
+
+                              <%# PRICE %>
+                              <div class="bottom-right" style="text-align-right">
+                                <div class="price d-flex justify-content-end">
+                                  <span class="currency mb-0">
+                                    <%= subscription.currency %>
+                                  </span>
+
+                                  <span class="value mb-0 pl-1">
+                                    <%= subscription.price %>
+                                  </span>
+                                </div>
+
+                                <span class="type mb-0">
+                                  <%= subscription.sub_type %>
+                                </span>
+                              </div>
+
+                            </div>
+
+                          <% end %>
+                        <% end %>
+                      </div>
                   <% else %>
-                    <% color = "success" %>
-                  <% end %>
+                      <div class="cards bg p-4 px-4 mt-5 mb-5 position-relative" style="background: #f8f9fa;border-left: 9px solid #457B9D;">
 
-                  <%= link_to subscription_path(subscription) do %>
+                        <%# PREMIUM SUBSCRIPTIONS %>
+                        <% subscriptions.each do |subscription| %>
+                          <% border = (subscription.notification_date - Date.today).to_i %>
 
+                          <%= link_to subscription_path(subscription) do %>
 
+                            <div class="subscription-card">
 
-                    <div class="subscription-card">
+                              <%# LOGO %>
+                              <div class="logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.designmantic.com/blog/wp-content/uploads/2016/07/Netflix-Revamps-Logo.jpg)"></div>
 
-                      <%# logo %>
-                      <div class="logo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.designmantic.com/blog/wp-content/uploads/2016/07/Netflix-Revamps-Logo.jpg)"></div>
+                              <div class="titlesection">
+                              <%# CATEGORY %>
+                                <div class="text-muted">
+                                  <span class="badge badge-light p-1"><%= subscription.category %></span>
+                                </div>
+                                <%# TITLE %>
+                                <div class="title">
+                                  <%= subscription.title %>
+                                </div>
+                              </div>
 
+                              <%# EMPTY 2 %>
+                              <div class="empty2">
+                                <% if border < 6 %>
 
-                      <div class="title">
-                      <%= subscription.title %>
+                                  <%# display the right image here %>
+                                  <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/595/595067.png" alt="warning">
+
+                                  <%# display the right image here %>
+
+                                <% end %>
+
+                              </div>
+
+                              <%# PRICE %>
+                              <div class="bottom-right" style="text-align-right">
+                                <div class="price d-flex justify-content-end">
+                                  <span class="currency mb-0">
+                                    <%= subscription.currency %>
+                                  </span>
+
+                                  <span class="value mb-0 pl-1">
+                                    <%= subscription.price %>
+                                  </span>
+                                </div>
+
+                                <span class="type mb-0">
+                                  <%= subscription.sub_type %>
+                                </span>
+
+                              </div>
+                            </div>
+
+                          <% end %>
+                        <% end %>
                       </div>
-                      <div class="empty1"></div>
-                      <div class="text-muted">
-                        <span class="badge badge-light p-1"><%= subscription.category %></span>
-                      </div>
-                      <div class="empty2"></div>
-                      <div class="bottom-right" style="text-align-right">
-                        <div class="price d-flex justify-content-end">
-                          <span class="currency mb-0">
-                            <%= subscription.currency %>
-                          </span>
-
-                          <span class="value mb-0 pl-1">
-                            <%= subscription.price %>
-                          </span>
-                        </div>
-
-                        <span class="type mb-0">
-                          <%= subscription.sub_type %>
-                        </span>
-
-                      </div>
-                    </div>
-
                   <% end %>
 
               <% end %>
             </div>
+
           </div>
         </div>
       </div>

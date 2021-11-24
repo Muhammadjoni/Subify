@@ -8,6 +8,14 @@
         <br>
         <br>
         <br>
+
+        <% if Date.today - @subscription.start_date <= @subscription.trial %>
+                  <h4>It's a <%= "trial" %></h4>
+                <% else %>
+                  <h4>It's a <%= "paid subscription" %></h4>
+                <% end %>
+        <h4>Total amount spent: </h4>
+
       </div>
     </div>
   </div>

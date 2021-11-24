@@ -8,7 +8,7 @@
 
         <div class="d-flex justify-content-around align-items-baseline fields bg-white">
           <%= f.input :category, collection: Subscription::CATEGORY , label: false, default: "Education"  %>
-          <%= f.text_field :start_date, type:"date", class:"trip-start" %>
+          <%= f.text_field :start_date, type:"date", class:"trip-start", :value => Date.today %>
           <%# <%= f.input :start_date, label: false %>
         </div>
 
