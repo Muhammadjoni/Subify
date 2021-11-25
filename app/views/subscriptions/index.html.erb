@@ -7,14 +7,14 @@
              <%# FULLNAME %>
              <div>
               <h3 class="profile-card"> Hello <%= current_user.first_name %> 👋🏽 </h3>
-              <h5 class="profile-card mt-0">Welcome Back !!</h5>
+              <h5 class="profile-card mt-0">Welcome Back!</h5>
              </div>
 
               <div class="text-left user-details d-flex align-items-inherit risk-subs">
                 <strong class="Sub-Text mr-2"> 💸 </strong>
                 <div>
                   <span class="text-muted font-weight-light"> <%= @total_free_price %> AED </span>
-                  <p> At Risk to pay </p>
+                  <p> You risk to pay </p>
                 </div>
               </div>
               <%# All Subscriptions %>
@@ -22,7 +22,7 @@
                 <strong class="Sub-Text mr-2"><%= @free_subscriptions.count %></strong>
                 <div>
                   <span class="text-muted font-weight-light">FREE TRIAL Subs</span>
-                  <p> Keep an Eye on them</p>
+                  <p> Pay attention to</p>
                 </div>
               </div>
 
@@ -30,7 +30,7 @@
                 <strong class="Sub-Text mr-2"><%= @subscriptions.count %></strong>
                 <div>
                   <span class="text-muted font-weight-light">ACTIVE Subs</span>
-                  <p> Due for next month <%= @total_price %> AED </p>
+                  <p> Due next month <%= @total_price %> AED </p>
                 </div>
               </div>
 
@@ -38,7 +38,7 @@
                 <strong class="Sub-Text mr-2"><%= @on_subscriptions %></strong>
                 <div>
                   <span class="text-muted font-weight-light">PAID Subs</span>
-                  <p>You're actual expenses <%= @on_price %> AED </p>
+                  <p>Your actual expenses <%= @on_price %> AED </p>
                 </div>
               </div>
 
@@ -61,7 +61,7 @@
       <%# Search Bar %>
           <div class="col-12 mt-5">
 
-            <div class="col-3 mt-4 mb-3 "><strong><h3>DASHBOARD</h3></strong></div>
+            <div class="col-3 mt-4 mb-3"><strong><h3>Dashboard</h3></strong></div>
             <div data-controller="search-subscriptions">
               <div class="search-form mb-4">
                     <%= form_with url: subscriptions_path, method: :get, html: { data: { search_subscriptions_target: 'form' } } do |f| %>
