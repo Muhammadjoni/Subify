@@ -65,9 +65,9 @@ user.subscriptions.create(
 
 user.subscriptions.create(
   title: 'Codecademy',
-  start_date: '2021-11-24',
+  start_date: '2021-11-18',
   sub_type: 'monthly',
-  notify_before: 6,
+  notify_before: 1,
   price: 55,
   currency: 'AED',
   notify: true,

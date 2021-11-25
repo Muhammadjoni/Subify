@@ -8,31 +8,25 @@ class SubscriptionsController < ApplicationController
       inbound.route
     end
     # Free & Paid Subs
-    @subscriptions = current_user.subscriptions
-    @free_subscriptions = @subscriptions.where(' ? - start_date <= trial', Date.today)
-    @on_subscriptions = @subscriptions.count - @free_subscriptions.count
+    @subscriptions       = current_user.subscriptions
+    @free_subscriptions  = @subscriptions.where(' ? - start_date <= trial', Date.today)
+    @on_subscriptions    = @subscriptions.count - @free_subscriptions.count
 
     # How to compute to total price of All subscriptions ?
-    @total_price = @subscriptions.map(&:price).sum
+    @total_price      = @subscriptions.map(&:price).sum
 
     # How to compute to total price of Free subscriptions ?
     @total_free_price = @free_subscriptions.map(&:price).sum
-    @on_price = @total_price - @total_free_price
-
-    grouped_subscriptions = @subscriptions.group_by(&:category)
-
-    @subscriptions = grouped_subscriptions.transform_values do |value|
-      value.group_by { |sub| Date.today - sub.start_date <= sub.trial }
-    end
+    @on_price         = @total_price - @total_free_price
 
     # SEARCH FORM
     if params[:query].present?
-      @subscriptions = Subscription.search(params[:query])
+      @subscriptions = grouped_subscriptions(Subscription.search(params[:query]))
     else
-      @subscriptions = grouped_subscriptions.transform_values do |value|
-        value.group_by { |sub| Date.today - sub.start_date <= sub.trial }
-      end
+      @subscriptions = grouped_subscriptions(@subscriptions)
     end
+
+    @result = @subscriptions.values.map { |group| group.values }.flatten.count
 
     respond_to do |format|
       format.html # Follow regular flow of Rails
@@ -53,6 +47,7 @@ class SubscriptionsController < ApplicationController
     @subscription.user = current_user
 
     if @subscription.save
+      SendWhatsappMessage.new(current_user, "Chill Out, I'll take care of the **#{subscripiton.title}** subscription! \n Enjoy! ").call
       redirect_to subscriptions_path, notice: 'Subscription was successfully created.'
     else
       render :new
@@ -87,6 +82,15 @@ class SubscriptionsController < ApplicationController
   end
 
   private
+
+  def grouped_subscriptions(subscriptions)
+    # grouped subscriptions by category
+    grouped_subscriptions = subscriptions.group_by(&:category)
+
+    grouped_subscriptions.transform_values do |value|
+      value.group_by { |sub| Date.today - sub.start_date <= sub.trial }
+    end
+  end
 
   def set_subscription
     @subscription = Subscription.find(params[:id])

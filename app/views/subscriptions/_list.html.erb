@@ -1,4 +1,15 @@
 <div data-search-subscriptions-target="list">
+
+
+  <div>
+    <p class="h3">
+    <% if params[:query].blank? %>
+      <%= pluralize @result, 'subscription' %> available
+    <% else %>
+      <%= pluralize @result, 'result' %> for <code><%= params[:query] %></code>
+    <% end %>
+    </p>
+  </div>
   <div class="category-box">
 
 
