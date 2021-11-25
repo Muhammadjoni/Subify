@@ -9,7 +9,7 @@ class SubscriptionsController < ApplicationController
     end
     # Free & Paid Subs
     @subscriptions       = current_user.subscriptions
-    @free_subscriptions  = @subscriptions.where(' ? - start_date <= trial', Date.today)
+    @free_subscriptions  = @subscriptions.where(' ? - ( start_date + trial ) <= 0', Date.today)
     @on_subscriptions    = @subscriptions.count - @free_subscriptions.count
 
     # How to compute to total price of All subscriptions ?
@@ -46,25 +46,25 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.create(subscription_params)
     @subscription.user = current_user
 
-    if @subscription.save
-      SendWhatsappMessage.new(current_user, "Chill Out, I'll take care of the **#{subscripiton.title}** subscription! \n Enjoy! ").call
-      redirect_to subscriptions_path, notice: 'Subscription was successfully created.'
-    else
-      render :new
-    end
-
-    # respond_to do |format|
-
-    #   if @subscription.save
-    #     message = "The subscription '#{@subscription.title}' was just added to Subify."
-    #     SendWhatsappMessage.new(message).call
-    #     format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
-    #     format.json { render :show, status: :created, location: @subscripiton }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @subscription.errors, status: :unprocessable_entity }
-    #   end
+    # if @subscription.save
+    #   SendWhatsappMessage.new(current_user, "Chill Out, I'll take care of the **#{subscripiton.title}** subscription! \n Enjoy! ").call
+    #   redirect_to subscriptions_path, notice: 'Subscription was successfully created.'
+    # else
+    #   render :new
     # end
+
+    respond_to do |format|
+
+      if @subscription.save
+        message = "The subscription '#{@subscription.title}' was just added to Subify."
+        SendWhatsappMessage.new(current_user, message).call
+        format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
+        format.json { render :show, status: :created, location: @subscripiton }
+      else
+        format.html { render :new }
+        format.json { render json: @subscription.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit

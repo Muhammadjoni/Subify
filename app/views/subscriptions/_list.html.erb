@@ -85,7 +85,7 @@
                               <div class="w-100 hover-box position-absolute px-2 p-4 align-items-baseline">
                                 <%# Days till renewal %>
                                 <div class="d-flex align-items-end">
-                                  <% days = (subscription.notification_date + 1 - Date.today).to_i %>
+                                  <% days = ((subscription.start_date + subscription.trial ) - Date.today).to_i %>
 
                                   <% if days.zero? %>
                                     <span>TODAY</span>

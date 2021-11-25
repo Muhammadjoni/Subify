@@ -29,6 +29,7 @@ class SubscriptionsMailbox < ApplicationMailbox
 
   def create_subscriptions(user, subscription_hash)
     new_subscription = user.subscriptions.create!(subscription_hash)
+    SendWhatsappMessage.new(user, "Chill Out, I'll take care of the **#{new_subscription.title}** subscription! \n Enjoy! ").call
   end
 
   def user

@@ -28,7 +28,7 @@ class Subscription < ApplicationRecord
     if self.saved_change_to_start_date? || self.saved_change_to_notify_before? || self.saved_change_to_sub_type?
 
       difference_with_today = (Date.today - self.start_date).to_i / SUB_TYPES_TO_DAYS[self.sub_type].last
-      additive_value = (Date.today.day - self.start_date.day).positive? ? 1 : 0
+      additive_value = (Date.today.day - self.start_date.day) >= 0 ? 1 : 0
       self.end_date = self.start_date + SUB_TYPES_TO_DAYS[self.sub_type].first
       self.notification_date = self.start_date + (SUB_TYPES_TO_DAYS[self.sub_type].first * (difference_with_today + additive_value)) - self.notify_before
 
