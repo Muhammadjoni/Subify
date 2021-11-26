@@ -3,7 +3,7 @@ User.destroy_all
 Subscription.destroy_all
 
 user = User.create(
-  first_name: 'Mr Jon',
+  first_name: 'Mr Sami',
   last_name: 'Rahimzod',
   email: 'mrahimzod@gmail.com',
   password: 'batman',
@@ -65,7 +65,7 @@ user.subscriptions.create(
 
 user.subscriptions.create(
   title: 'Codecademy',
-  start_date: '2021-11-18',
+  start_date: '2021-11-19',
   sub_type: 'monthly',
   notify_before: 1,
   price: 55,
