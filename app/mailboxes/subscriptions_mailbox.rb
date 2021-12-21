@@ -4,7 +4,7 @@ class SubscriptionsMailbox < ApplicationMailbox
 
     identifiers = {
       'Netflix' => ['netflix.com', 'netflix.com/YourAccount'],
-      'Pipedrive' => ['pipedrive.com', 'zarin.pipedrive.com/settings/subscription/churn-shield?cancellation=true'],
+      'Pipedrive' => ['pipedrive.com', 'zarin.pipedrive.com/settings/subscription/churn-shield?cancellation=true']
     }
 
     image_url = ClearbitServices.new(identifiers[mail.subject].first, mail.subject).call
@@ -22,7 +22,6 @@ class SubscriptionsMailbox < ApplicationMailbox
     }
 
     create_subscriptions(user, subscription_hash)
-
   end
 
   private
